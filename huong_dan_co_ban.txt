@@ -1,0 +1,4 @@
+﻿Thay đổi dường dẫn:
+1. libraries: ckfinder: config.php: thay đường dẫn dòng 69
+2. libraries: ckeditor: config.is: thay đường dẫn dòng 13-23
+3. config: config.php: thay đường dẫn dòng 15
