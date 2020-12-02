@@ -20,9 +20,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=room&action=add">Thêm phòng</a></li>
-                    <li><a href="?mod=room&action=listRoom">Danh sách phòng</a></li>
-                    <li><a href="?mod=room&action=listRoomType">Loại phòng</a></li>
+                    <li><a href="?mod=room&controller=roomtype">Danh sách loại phòng</a></li>
+                    <li><a href="?mod=room&controller=room&action=list_room">Danh sách phòng</a></li>
+                    <li><a href="?mod=room&action=listRoomType">Danh sách chi tiết phòng</a></li>
                 </ul>
             </li>
         </ul>

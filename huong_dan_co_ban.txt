@@ -2,3 +2,4 @@
 1. libraries: ckfinder: config.php: thay đường dẫn dòng 69
 2. libraries: ckeditor: config.is: thay đường dẫn dòng 13-23
 3. config: config.php: thay đường dẫn dòng 15
+4. cách chạy 1 đường dẫn: http://localhost/Backend/DoAn/QuanLyKhachSan1/?mod=admin&controller=login&action=login

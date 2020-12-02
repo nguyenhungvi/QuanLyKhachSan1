@@ -13,6 +13,11 @@
                <div class="header-title">
                   <h1>CRM Admin Dashboard</h1>
                   <small>Very detailed & featured admin.</small>
+                  <?php    echo time()-$_SESSION['time_login'];
+                  echo "hihi";
+                  echo time();
+                  echo "hihi";
+                  echo $_SESSION['time_login'];?>
                </div>
             </section>
             <!-- Main content -->

@@ -330,7 +330,7 @@
                               <i class="fa fa-user"></i> User Profile</a>
                            </li>
                            <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
-                           <li><a href="?mod=login&action=logout">
+                           <li><a href="?mod=admin&controller=login&action=logout">
                               <i class="fa fa-sign-out"></i> Signout</a>
                            </li>
                         </ul>

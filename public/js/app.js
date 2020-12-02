@@ -6,7 +6,7 @@ $(document).ready(function () {
         var roomState;
         //console.log(id);
         $.ajax({
-            url: '?mod=room&action=updateRoom_Show', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            url: '?mod=room&controller=room&action=update_room', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
             method: 'POST', //POST OR GET, mặc định GET
             data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
 //            dataType: 'text', //html,text, script
@@ -15,7 +15,6 @@ $(document).ready(function () {
                 //Xử lý dữ liệu trả về
                 $("input[name='roomId']").val(data.id);
                 $("input[name='roomNumber']").val(data.roomNuber);
-                $("input[name='roomImage']").val(data.image);
 //                CKEDITOR.instances['roomDescription'].setData(data.description);
                 roomType = data.typeCode;
                 $("#roomType>option[value='" + roomType + "']").attr('selected', 'selected');

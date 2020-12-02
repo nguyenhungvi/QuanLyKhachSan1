@@ -14,6 +14,7 @@ $action_name = get_action().'Action';
 call_function(array('construct', $action_name));
 
 
+//Kiểm tra login và 
 if(!is_login()&& get_action()!='login'){
-    redirect("?mod=login&action=login");
+    redirect("?mod=admin&controller=login&action=login");
 }
