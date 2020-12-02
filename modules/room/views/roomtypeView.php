@@ -10,8 +10,8 @@ get_sidebar();
             <i class="fa fa-home"></i>
         </div>
         <div class="header-title">
-            <h1>Phòng</h1>
-            <small>Danh sách phòng</small>
+            <h1>Loại Phòng</h1>
+            <small>Danh sách loại phòng</small>
         </div>
     </section>
     <!-- Main content -->
@@ -39,34 +39,28 @@ get_sidebar();
                         <thead>
                             <tr class="info">
                                 <th>STT</th>
-                                <th>Số phòng</th>
-                                <th>Loại phòng</th>
-                                <th>Trạng thái</th>
+                                <th>Tên loại phòng</th>
+                                <th>Hình ảnh</th>
+                                <th>Giá</th>
                                 <th>Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            if (!empty($list_rooms)) {
+                            if (!empty($list_rooms_type)) {
                                 $t = $start;
                                 global $room_id;
-                                foreach ($list_rooms as $room) {
+                                foreach ($list_rooms_type as $room_type) {
                                     $t++;
                                     ?>
                                     <tr>
                                         <td><?php echo $t; ?></td>
-                                        <td><?php echo $room['roomNumber']; ?></td>
-                                        <td><?php echo $room['name']; ?></td>
-                                        <td><?php
-                                                if ($room['state'] == 0) {
-                                                    echo "<span class='label-warning label label-default'>Còn trống</span>";
-                                                } elseif ($room['state'] == 1) {
-                                                    echo "<span class='label-custom label label-default'>Đã đặt</span>";
-                                                }
-                                                ?></td>
+                                        <td><?php echo $room_type['name']; ?></td>
+                                        <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-thumbnail" alt="User Image" width="100" height="auto"> </td>
+                                        <td><?php echo currency_format($room_type['price']); ?></td>
                                         <td>
-                                            <button type="button" name="roomUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" room-id="<?php echo $room['id']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" name="roomDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-id="<?php echo $room['id']; ?>"><i class="fa fa-trash-o"></i> </button>
+                                            <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>"><i class="fa fa-pencil"></i></button>
+                                            <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>"><i class="fa fa-trash-o"></i> </button>
                                         </td>
                                     </tr>
                                     <?php
@@ -84,7 +78,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Thêm phòng</h3>
+                        <h3><i class="fa fa-user m-r-5"></i> Thêm loại phòng</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -142,7 +136,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Update Room</h3>
+                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật loại phòng</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -151,29 +145,18 @@ get_sidebar();
                                     <fieldset>
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
-                                            <input type="hidden" name="roomId" value=""/>
-                                            <label class="control-label">Số phòng:</label>
-                                            <input type="text" name="roomNumber" placeholder="" value="" class="form-control">
+                                            <input type="hidden" name="roomtypeId" value=""/>
+                                            <label class="control-label">Tên loại phòng:</label>
+                                            <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Loại phòng:</label>
-                                            <select class="form-control" name="roomType" id="roomType">
-                                                <?php
-                                                foreach ($list_room_type as $room_type) {
-                                                    ?>
-                                                    <option value="<?php echo $room_type['id'];?>"><?php echo $room_type['name'];?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
+                                            <label class="control-label">Giá loại phòng:</label>
+                                            <input type="number" min="0" name="roomtypePrice" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Trạng thái:</label>
-                                            <select class="form-control" name="roomState" id="roomState">
-                                                <option value="0">Còn trống</option>
-                                                <option value="1">Đã đặt</option>
-                                            </select>
+                                            <label class="control-label">Hình ảnh loại phòng:</label>
+                                            <input type="file" name="roomImage" value="" class="form-control">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">

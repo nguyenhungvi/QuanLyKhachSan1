@@ -22,3 +22,15 @@ function get_room_id($id){
     $result= db_fetch_row("SELECT * FROM `room` WHERE `id`={$id}");
     return $result;
 }
+
+function update_info_room_id($data,$id){
+    db_update('room', $data,"`id`={$id}");
+}
+
+function delete_room_id($id){
+    db_delete('room', "`id`={$id}");
+}
+
+function add_room($data){
+    db_insert('room', $data);
+}
