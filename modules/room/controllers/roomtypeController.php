@@ -32,33 +32,55 @@ function list_room_typeAction() {
     $data['list_rooms_type'] = $list_rooms_type;
     $data['start'] = $start;
     $data['get_pagging'] = $get_pagging;
-    
+
     //update_room khi tồn tại nut lưu
-    if(isset($_POST['save-update-room-id'])){
+    if (isset($_POST['save-update-room-type-id'])) {
         update_room_typeAction();
     }
     //delete_room_id khi có tồn tại nút yes
-    if(isset($_POST['btn-delete-room'])){
+    if (isset($_POST['btn-delete-room-type'])) {
         delete_room_typeAction();
     }
     //add_room khi tồn tại nút lưu của thêm phòng
-    if(isset($_POST['save-add-room-id'])){
+    if (isset($_POST['save-add-room-type-id'])) {
         add_room_typeAction();
     }
     load_view('roomtype', $data);
 }
 
 function update_room_typeAction() {
-//    if(isset($_POST['save-update-room-id'])){
-//        $room_id=$_POST['roomId'];
-//        $data=array(
-//            'roomNumber'=>$_POST['roomNumber'],
-//            'typeCode'=>$_POST['roomType'],
-//            'state'=>$_POST['roomState']
-//        );
-//        update_info_room_id($data,$room_id);
-//        redirect("?mod=room&controller=room&action=list_room");
-//    }
+
+    if (isset($_POST['save-update-room-type-id'])) {
+        $room_id = $_POST['roomtypeId'];
+        global $error;
+        if (isset($_FILES['roomtypeImage'])) {
+            $imagetype = $_FILES['roomtypeImage']['type'];
+            if ($imagetype != "image/png" && $imagetype != "image/jpg" && $imagetype != "image/jpeg" && $imagetype != "image/git") {
+                $error['image'] = "Không đúng định dạng";
+            } else {
+                if ($_FILES['roomtypeImage']['size'] > 1000000) {
+                    $error['image'] = "Kích thước ảnh quá lớn";
+                } else {
+                    move_uploaded_file($_FILES['roomtypeImage']['tmp_name'], 'D:/Unitop/xampp/htdocs/Backend/DoAn/QuanLyKhachSan1/public/images/room/' . $_FILES['roomtypeImage']['name']);
+                    $data = array(
+                    'name' => $_POST['roomtypeName'],
+                    'price' => $_POST['roomtypePrice'],
+                    'image' => $_FILES['roomtypeImage']['name']
+
+                    );
+                    update_info_room_type_id($data,$room_id);
+                    redirect("?mod=room&controller=roomtype&action=list_room_type");
+                }
+            }
+        } else {
+            $data = array(
+                'name' => $_POST['roomtypeName'],
+                'price' => $_POST['roomtypePrice']
+            );
+            update_info_room_type_id($data, $room_id);
+            redirect("?mod=room&controller=roomtype&action=list_room_type");
+        }
+    }
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
         $room_type_id = get_room_type_id($id);
@@ -66,28 +88,52 @@ function update_room_typeAction() {
             'id' => $room_type_id['id'],
             'name' => $room_type_id['name'],
             'price' => $room_type_id['price'],
-            'image'=>$room_type_id['image']
+                //'image' => $room_type_id['image']
         );
         echo json_encode($result);
     }
 }
 
-function delete_room_typeAction(){
-    if(isset($_POST['btn-delete-room'])){
-        $id=$_POST['roomId'];
-        delete_room_id($id);
-        redirect("?mod=room&controller=room&action=list_room");
+function delete_room_typeAction() {
+    if (isset($_POST['btn-delete-room-type'])) {
+        $id = $_POST['roomtypeId'];
+        delete_room_type_id($id);
+        redirect("?mod=room&controller=roomtype&action=list_room_type");
     }
 }
 
-function add_room_typeAction(){
-    if(isset($_POST['save-add-room-id'])){
-        $data=array(
-            'roomNumber'=>$_POST['roomNumber'],
-            'typeCode'=>$_POST['roomType'],
-            'state'=>$_POST['roomState']
-        );
-        add_room($data);
-        redirect("?mod=room&controller=room&action=list_room");
-    }
+function add_room_typeAction() {
+
+        if (isset($_POST['save-add-room-type-id'])) {
+            //$room_id = $_POST['roomtypeId'];
+            global $error;
+            if (isset($_FILES['roomtypeImage'])) {
+                $imagetype = $_FILES['roomtypeImage']['type'];
+                if ($imagetype != "image/png" && $imagetype != "image/jpg" && $imagetype != "image/jpeg" && $imagetype != "image/git") {
+                    $error['image'] = "Không đúng định dạng";
+                } else {
+                    if ($_FILES['roomtypeImage']['size'] > 1000000) {
+                        $error['image'] = "Kích thước ảnh quá lớn";
+                    } else {
+                        move_uploaded_file($_FILES['roomtypeImage']['tmp_name'], 'D:/Unitop/xampp/htdocs/Backend/DoAn/QuanLyKhachSan1/public/images/room/' . $_FILES['roomtypeImage']['name']);
+                        $data = array(
+                            'name' => $_POST['roomtypeName'],
+                            'price' => $_POST['roomtypePrice'],
+                            'image' => $_FILES['roomtypeImage']['name']
+                        );
+                        //update_info_room_type_id($data,$room_id);
+                        insert_info_room_type($data);
+                        redirect("?mod=room&controller=roomtype&action=list_room_type");
+                    }
+                }
+            } else {
+                $data = array(
+                    'name' => $_POST['roomtypeName'],
+                    'price' => $_POST['roomtypePrice']
+                );
+                //update_info_room_type_id($data, $room_id);
+                insert_info_room_type($data);
+                redirect("?mod=room&controller=roomtype&action=list_room_type");
+            }
+        }
 }

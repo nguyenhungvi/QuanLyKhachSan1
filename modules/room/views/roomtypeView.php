@@ -83,37 +83,28 @@ get_sidebar();
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" enctype="multipart/form-data" method="POST">
                                     <fieldset>
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
-                                            <input type="hidden" name="roomId" value=""/>
-                                            <label class="control-label">Số phòng:</label>
-                                            <input type="text" name="roomNumber" placeholder="" value="" class="form-control">
+                                            <!--<input type="hidden" name="roomId" value=""/>-->
+                                            <label class="control-label">Tên loại phòng</label>
+                                            <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Loại phòng:</label>
-                                            <select class="form-control" name="roomType" id="roomType">
-                                                <?php
-                                                foreach ($list_room_type as $room_type) {
-                                                    ?>
-                                                    <option value="<?php echo $room_type['id'];?>"><?php echo $room_type['name'];?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
+                                            <label class="control-label">Giá loại phòng</label>
+                                            <input type="number" name="roomtypePrice" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Trạng thái:</label>
-                                            <select class="form-control" name="roomState" id="roomState">
-                                                <option value="0">Còn trống</option>
-                                                <option value="1">Đã đặt</option>
-                                            </select>
+                                            <label class="control-label">Hình ảnh loại phòng:</label>
+                                            <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
+                                            <input type="file" name="roomtypeImage" value="">
+                                            <?php echo form_error('image'); ?>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">
-                                                <input type="submit" name="save-add-room-id" class="btn btn-add btn-sm" value="Save"/>
+                                                <input type="submit" name="save-add-room-type-id" class="btn btn-add btn-sm" value="Save"/>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -141,7 +132,7 @@ get_sidebar();
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" enctype="multipart/form-data" method="POST">
                                     <fieldset>
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
@@ -156,11 +147,13 @@ get_sidebar();
 
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Hình ảnh loại phòng:</label>
-                                            <input type="file" name="roomImage" value="" class="form-control">
+                                            <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
+                                            <input type="file" name="roomtypeImage" value="">
+                                            <?php echo form_error('image'); ?>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">
-                                                <input type="submit" name="save-update-room-id" class="btn btn-add btn-sm" value="Save"/>
+                                                <input type="submit" name="save-update-room-type-id" class="btn btn-add btn-sm" value="Save"/>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -192,11 +185,11 @@ get_sidebar();
                                 <form class="form-horizontal" method="POST">
                                     <fieldset>
                                         <div class="col-md-12 form-group user-form-group">
-                                            <label class="control-label">Bạn có chắc chắn muốn xóa phòng: <span id="roomNumber_del"></span></label>
+                                            <label class="control-label">Bạn có chắc chắn muốn xóa loại phòng: <span id="roomtypeName_del"></span></label>
                                             <div class="pull-right">
-                                                <input type="hidden" name="roomId" value=""/>
+                                                <input type="hidden" name="roomtypeId" value=""/>
                                                 <input type="button" class="btn btn-danger btn-sm"  data-dismiss="modal" value="NO"/>
-                                                <input type="submit" name="btn-delete-room" class="btn btn-add btn-sm" value="YES"/>
+                                                <input type="submit" name="btn-delete-room-type" class="btn btn-add btn-sm" value="YES"/>
                                             </div>
                                         </div>
                                     </fieldset>

@@ -23,14 +23,18 @@ function get_room_type_id($id){
     return $result;
 }
 
-function update_info_room_id($data,$id){
-    db_update('room', $data,"`id`={$id}");
+function update_info_room_type_id($data,$id){
+    db_update('roomtype', $data,"`id`={$id}");
 }
 
-function delete_room_id($id){
-    db_delete('room', "`id`={$id}");
+function delete_room_type_id($id){
+    db_delete('roomtype', "`id`={$id}");
 }
 
 function add_room($data){
     db_insert('room', $data);
+}
+
+function insert_info_room_type($data){
+    db_insert('roomtype', $data);
 }
