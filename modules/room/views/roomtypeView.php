@@ -59,8 +59,9 @@ get_sidebar();
                                         <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-thumbnail" alt="User Image" width="100" height="auto"> </td>
                                         <td><?php echo currency_format($room_type['price']); ?></td>
                                         <td>
-                                            <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>"><i class="fa fa-trash-o"></i> </button>
+                                            <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
+                                            <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
+                                            <button type="button" name="roomtypeDetail" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </button>
                                         </td>
                                     </tr>
                                     <?php
