@@ -35,14 +35,14 @@ get_sidebar();
                 </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="table-responsive">
-                    <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                    <table id="dataTableExample1" class="table table-bordered table-striped table-hover text-center">
                         <thead>
                             <tr class="info">
-                                <th>STT</th>
-                                <th>Tên loại phòng</th>
-                                <th>Hình ảnh</th>
-                                <th>Giá</th>
-                                <th>Chỉnh sửa</th>
+                                <th class="col-md-1">STT</th>
+                                <th class="col-md-4">Tên loại phòng</th>
+                                <th class="col-md-3">Hình ảnh</th>
+                                <th class="col-md-2">Giá</th>
+                                <th class="col-md-2">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,14 +54,15 @@ get_sidebar();
                                     $t++;
                                     ?>
                                     <tr>
-                                        <td><?php echo $t; ?></td>
+                                        <td><p><?php echo $t; ?></p></td>
                                         <td><?php echo $room_type['name']; ?></td>
-                                        <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-thumbnail" alt="User Image" width="100" height="auto"> </td>
-                                        <td><?php echo currency_format($room_type['price']); ?></td>
+                                        <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
+<!--                                        <td><?php //echo currency_format($room_type['price']); ?></td>-->
+                                        <td><input type="text" value="<?php echo currency_format($room_type['price']); ?>" disabled="" class="text-center"/></td>
                                         <td>
                                             <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
                                             <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
-                                            <button type="button" name="roomtypeDetail" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </button>
+                                            <a name="roomtypeDetail" href="?mod=room&controller=roomtype_detail&action=get_detail&id=<?php echo $room_type['id']; ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
                                         </td>
                                     </tr>
                                     <?php

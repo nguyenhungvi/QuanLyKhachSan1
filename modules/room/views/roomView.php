@@ -35,14 +35,14 @@ get_sidebar();
                 </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="table-responsive">
-                    <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                    <table id="dataTableExample1" class="table table-bordered table-striped table-hover text-center">
                         <thead>
                             <tr class="info">
-                                <th>STT</th>
-                                <th>Số phòng</th>
-                                <th>Loại phòng</th>
-                                <th>Trạng thái</th>
-                                <th>Chỉnh sửa</th>
+                                <th class="col-md-1">STT</th>
+                                <th class="col-md-2">Số phòng</th>
+                                <th class="col-md-5">Loại phòng</th>
+                                <th class="col-md-2">Trạng thái</th>
+                                <th class="col-md-2">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
