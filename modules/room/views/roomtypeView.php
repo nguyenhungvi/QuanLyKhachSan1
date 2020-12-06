@@ -23,7 +23,8 @@ get_sidebar();
                     <div class="buttonexport" id="buttonlist"> 
 <!--                        <a class="btn btn-add" href="?mod=room&action=add"> <i class="fa fa-plus"></i> Thêm phòng
                         </a> -->
-                        <button type="button" name="roomAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm phòng</button>
+                        <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
+                        <button type="button" name="roomtype_update_price_all" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Cập nhật giá phòng</button>
                     </div>
                     <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
                     <ul class="dropdown-menu exp-drop" role="menu">
@@ -41,7 +42,7 @@ get_sidebar();
                                 <th class="col-md-1">STT</th>
                                 <th class="col-md-4">Tên loại phòng</th>
                                 <th class="col-md-3">Hình ảnh</th>
-                                <th class="col-md-2">Giá</th>
+                                <th class="col-md-2">Giá($)</th>
                                 <th class="col-md-2">Chỉnh sửa</th>
                             </tr>
                         </thead>
@@ -57,8 +58,8 @@ get_sidebar();
                                         <td><p><?php echo $t; ?></p></td>
                                         <td><?php echo $room_type['name']; ?></td>
                                         <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
-<!--                                        <td><?php //echo currency_format($room_type['price']); ?></td>-->
-                                        <td><input type="text" value="<?php echo currency_format($room_type['price']); ?>" disabled="" class="text-center"/></td>
+        <!--                                        <td><?php //echo currency_format($room_type['price']);  ?></td>-->
+                                        <td><input type="text" value="<?php echo number_format($room_type['price']); ?>" disabled="" class="text-center border-price-roomtype" id="roomtype_price"/></td>
                                         <td>
                                             <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
                                             <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
@@ -95,7 +96,7 @@ get_sidebar();
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Giá loại phòng</label>
-                                            <input type="number" name="roomtypePrice" placeholder="" value="" class="form-control">
+                                            <input type="number" name="roomtypePrice" min="0" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">

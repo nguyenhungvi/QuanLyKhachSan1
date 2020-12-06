@@ -43,6 +43,7 @@
       <!--Script tự thêm-->
       <script src="libraries/ckeditor/ckeditor.js" type="text/javascript"></script>
       <script src="public/js/app.js" type="text/javascript"></script>
+      <script src="public/js/setting.js" type="text/javascript"></script>
 <!--      <script>
          function dash() {
          // single bar chart
