@@ -8,5 +8,6 @@ function construct() {
 
 function get_detailAction(){
     $id= $_GET['id'];
+    load_view('roomtype_detail');
 }
 
