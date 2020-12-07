@@ -28,7 +28,7 @@ get_sidebar();
             <i class="fa fa-home"></i>
         </div>
         <div class="header-title">
-            <h1>Loại Phòng</h1>
+            <h1>Chi tiết phòng</h1>
             <small>Danh sách loại phòng</small>
         </div>
     </section>
@@ -39,10 +39,7 @@ get_sidebar();
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="btn-group">
                     <div class="buttonexport" id="buttonlist"> 
-<!--                        <a class="btn btn-add" href="?mod=room&action=add"> <i class="fa fa-plus"></i> Thêm phòng
-                        </a> -->
-                        <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
-                        <button type="button" name="roomtype_update_price_all" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Cập nhật giá phòng</button>
+                        <button type="button" name="roomtypedetail_update" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Cập nhật chi tiết phòng</button>
                     </div>
                 </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
@@ -50,32 +47,25 @@ get_sidebar();
                     <div class="col-md-12">
                         <form class="form-horizontal" enctype="multipart/form-data" method="POST">
                             <fieldset>
+
                                 <!-- Số phòng-->
                                 <div class="col-md-4 form-group">
-                                    <input type="hidden" name="roomtypeId" value=""/>
-                                    <label class="control-label">Tên loại phòng:</label>
+                                    <input type="hidden" name="roomtypedetailAcre" value=""/>
+                                    <label class="control-label">Diện Tích:</label>
                                     <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label class="control-label">Giá loại phòng:</label>
-                                    <input type="number" min="0" name="roomtypePrice" placeholder="" value="" class="form-control">
+                                    <label class="control-label">Hướng phòng:</label>
+                                    <input type="text" name="roomtypedetailDirection" placeholder="" value="" class="form-control">
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <img class="card-img-top" src="http://placehold.it/300x300" alt="">
-                                        <input type="file" name="roomtypeImage" value="">
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <img class="card-img-top" src="http://placehold.it/300x300" alt="">
-                                        <input type="file" name="roomtypeImage" value="">
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <img class="card-img-top" src="http://placehold.it/300x300" alt="">
-                                        <input type="file" name="roomtypeImage" value="">
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <img class="card-img-top" src="http://placehold.it/300x300" alt="">
-                                        <input type="file" name="roomtypeImage" value="">
+                                <div class="col-md-4 form-group">
+                                    <label class="control-label">Giường:</label>
+                                    <input type="number" min="1" name="roomtypedetailBed" placeholder="" value="1" class="form-control">
+                                </div>
+                                <div class="col-md-12 form-group user-form-group text-center">
+                                    <input type="submit" name="save-update-room-type-id" class="btn btn-add btn-sm" value="Save" style="width: 50%;"/>
+                                    <div class="">
+
                                     </div>
                                 </div>
                             </fieldset>
