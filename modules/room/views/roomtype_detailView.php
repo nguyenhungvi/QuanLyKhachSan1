@@ -36,37 +36,56 @@ get_sidebar();
     <section class="content content-wp">
         <div class="row">
             <div class="col-sm-12">
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="btn-group">
                     <div class="buttonexport" id="buttonlist"> 
                         <button type="button" name="roomtypedetail_update" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Cập nhật chi tiết phòng</button>
                     </div>
                 </div>
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-horizontal" enctype="multipart/form-data" method="POST">
+                            <?php
+//                            show_array($roomtypedetail);
+//                            show_array($roomtypedetail_img);
+                            ?>
                             <fieldset>
 
                                 <!-- Số phòng-->
                                 <div class="col-md-4 form-group">
                                     <input type="hidden" name="roomtypedetailAcre" value=""/>
                                     <label class="control-label">Diện Tích:</label>
-                                    <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
+                                    <input type="text" name="roomtypeName" placeholder="" value="<?php echo $roomtypedetail['dientich'] ?>" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="control-label">Hướng phòng:</label>
-                                    <input type="text" name="roomtypedetailDirection" placeholder="" value="" class="form-control">
+                                    <input type="text" name="roomtypedetailDirection" placeholder="" value="<?php echo $roomtypedetail['huongphong'] ?>" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="control-label">Giường:</label>
-                                    <input type="number" min="1" name="roomtypedetailBed" placeholder="" value="1" class="form-control">
+                                    <input type="number" min="1" name="roomtypedetailBed" placeholder="" value="<?php echo $roomtypedetail['giuong'] ?>" class="form-control">
                                 </div>
-                                <div class="col-md-12 form-group user-form-group text-center">
+                                <div class="col-md-12 form-group">
+                                    <label class="control-label">Hình ảnh:</label>
+                                    <ul>
+                                        <?php
+                                        if (!empty($roomtypedetail_img)) {
+                                            foreach ($roomtypedetail_img as $img) {
+                                                ?>
+                                                <li class="col-md-4"><img class="roomtypedetail_image" src="http://localhost/Backend/DoAn/QuanLyKhachSan1/public/images/room/<?php echo $img['image']; ?>"/> </li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="control-label">Thêm hình ảnh:</label>
+                                </div>
+                                <div class="col-md-6 form-group user-form-group text-center">
+                                    <input type="button" name="save-update-room-type-id" class="btn btn-warning btn-sm" value="Thêm file mới" style="width: 50%;"/>
+                                </div>
+                                <div class="col-md-6 form-group user-form-group text-center">
                                     <input type="submit" name="save-update-room-type-id" class="btn btn-add btn-sm" value="Save" style="width: 50%;"/>
-                                    <div class="">
-
-                                    </div>
                                 </div>
                             </fieldset>
                         </form>

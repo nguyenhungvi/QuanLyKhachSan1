@@ -40,3 +40,9 @@ ul.pagging li.active a{
 .border-price-roomtype{
     border: 0px solid;
 }
+
+.roomtypedetail_image{
+    width: 100%;
+    object-fit: contain;
+    height: 250px;
+}

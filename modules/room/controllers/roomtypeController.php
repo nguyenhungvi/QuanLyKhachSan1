@@ -96,8 +96,9 @@ function update_room_typeAction() {
 function delete_room_typeAction() {
     if (isset($_POST['btn-delete-room-type'])) {
         $id = $_POST['roomtypeId'];
+        $page=$_GET['page'];
         delete_room_type_id($id);
-        redirect("?mod=room&controller=roomtype&action=list_room_type");
+        redirect("?mod=room&controller=roomtype&action=list_room_type&page=$page");
     }
 }
 

@@ -1,8 +1,10 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+function get_roomtypedetail_id($id){
+    $result= db_fetch_row("SELECT * FROM `roomdetail` WHERE `room_code`={$id}");
+    return $result;
+}
+ function get_roomtypedetail_img_id($id){
+    $result= db_fetch_array("SELECT * FROM `roomdetail_img` WHERE `room_code`={$id}");
+    return $result;
+ }
