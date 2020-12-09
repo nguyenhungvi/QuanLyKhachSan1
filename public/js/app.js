@@ -95,6 +95,7 @@ $(document).ready(function () {
 
 });
 
+//ajax delete_Loại Phòng
 $(document).ready(function () {
 
     $("button[name='roomtypeDelete']").click(function () {
@@ -121,3 +122,6 @@ $(document).ready(function () {
     });
 
 });
+
+//chi tiết loại phòng
+//ajax delete_Loại Phòng

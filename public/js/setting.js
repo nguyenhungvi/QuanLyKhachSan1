@@ -6,7 +6,6 @@ $(document).ready(function (){
 });
 
 // xử lý js roomtype_detail
-var abc=0;
 $(document).ready(function(){
    $('#add_file_img').click(function(){
        $('#tamthoi').before($('<li/>',{
@@ -17,4 +16,14 @@ $(document).ready(function(){
            type: 'file'
        }),$("<br/><br/>")));
    }) ;
+});
+
+// lấy id của hình ảnh muốn xóa đưa vô value của roomtypedetail_img_Id trong #custome2
+$(document).ready(function () {
+
+    $("button[name='roomtypedetail_img_Delete']").click(function () {
+        var id = $(this).attr('del-room-type-detail-img-id');
+        $("input[name='roomtypedetail_img_Id']").val(id);
+        
+    });
 });
