@@ -123,5 +123,61 @@ $(document).ready(function () {
 
 });
 
-//chi tiết loại phòng
+//Customer
+//ajax update_loạiphong
+$(document).ready(function () {
+    $("button[name='customerUpdate']").click(function () {
+        var id = $(this).attr('update-customer-id');
+        var data = {id: id};
+        console.log(id);
+        $.ajax({
+            url: '?mod=customer&controller=customer&action=update_customer', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+//            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='roomtypeId']").val(data.id);
+                $("input[name='roomtypeName']").val(data.name);
+                $("input[name='roomtypePrice']").val(data.price);
+//                //CKEDITOR.instances['room_type_Description'].setData(data.description);
+                console.log(data.price);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+
+
+});
+
 //ajax delete_Loại Phòng
+$(document).ready(function () {
+
+    $("button[name='roomtypeDelete']").click(function () {
+        var id = $(this).attr('del-room-type-id');
+        var data = {id: id};
+        console.log(id);
+        $.ajax({
+            url: '?mod=room&controller=roomtype&action=update_room_type', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+//            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='roomtypeId']").val(data.id);
+                $("#roomtypeName_del").html("<strong>" + data.name + "</strong>");
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+
+});
