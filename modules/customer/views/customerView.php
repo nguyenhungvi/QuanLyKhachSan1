@@ -23,7 +23,7 @@ get_sidebar();
                     <div class="buttonexport" id="buttonlist"> 
 <!--                        <a class="btn btn-add" href="?mod=room&action=add"> <i class="fa fa-plus"></i> Thêm phòng
                         </a> -->
-                        <button type="button" name="roomAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm khách hàng</button>
+                        <!--<button type="button" name="roomAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm khách hàng</button>-->
                     </div>
                     <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
                     <ul class="dropdown-menu exp-drop" role="menu">
@@ -46,7 +46,6 @@ get_sidebar();
                                 <th class="col-md-2">Email</th>
                                 <th class="col-md-1">Trạng thái</th>
                                 <th class="col-md-1">Chỉnh sửa</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -64,17 +63,9 @@ get_sidebar();
                                         <td><?php echo $customers['address']; ?></td>
                                         <td><?php echo $customers['cmnd']; ?></td>
                                         <td><?php echo $customers['email']; ?></td>
-                                        <td><?php echo $customers['state']; ?></td>
-<!--                                        <td><?php
-//                                            if ($room['state'] == 0) {
-//                                                echo "<span class='label-warning label label-default'>Còn trống</span>";
-//                                            } elseif ($room['state'] == 1) {
-//                                                echo "<span class='label-custom label label-default'>Đã đặt</span>";
-//                                            }
-                                            ?></td>-->
+                                        <td><span class="<?php echo color_state_Customer($customers['state']); ?>"><?php echo state_Customer($customers['state']); ?></span></td>
                                         <td>
                                             <button type="button" name="customerUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-customer-id="<?php echo $customers['cus_code']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" name="customerDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-customer-id="<?php echo $customers['cus_code']; ?>"><i class="fa fa-trash-o"></i> </button>
                                         </td>
                                     </tr>
                                     <?php
@@ -87,69 +78,62 @@ get_sidebar();
             </div>
         </div>
         <!-- add Room -->
-        <div class="modal fade" id="customer3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog w-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-header-primary">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Thêm khách hàng</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form class="form-horizontal" method="POST">
-                                    <fieldset>
-                                        <!-- Số phòng-->
-                                        <div class="col-md-4 form-group">
-<!--                                            <input type="hidden" name="roomId" value=""/>-->
-                                            <label class="control-label">Tên khách hàng:</label>
-                                            <input type="text" name="customerName" placeholder="" value="" class="form-control">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-<!--                                            <input type="hidden" name="roomId" value=""/>-->
-                                            <label class="control-label">Số điện thoại:</label>
-                                            <input type="text" name="customerPhone" placeholder="" value="" class="form-control">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-<!--                                            <input type="hidden" name="roomId" value=""/>-->
-                                            <label class="control-label">Địa chỉ:</label>
-                                            <input type="text" name="customerAddress" placeholder="" value="" class="form-control">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-<!--                                            <input type="hidden" name="roomId" value=""/>-->
-                                            <label class="control-label">CMND:</label>
-                                            <input type="text" name="customerCMND" placeholder="" value="" class="form-control">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-<!--                                            <input type="h  idden" name="roomId" value=""/>-->
-                                            <label class="control-label">Email:</label>
-                                            <input type="text" name="customerEmail" placeholder="" value="" class="form-control">
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <label class="control-label">Trạng thái:</label>
-                                            <select class="form-control" name="roomState" id="roomState">
-                                                <option value="0">Còn trống</option>
-                                                <option value="1">Đã đặt</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12 form-group user-form-group">
-                                            <div class="pull-right">
-                                                <input type="submit" name="save-add-room-id" class="btn btn-add btn-sm" value="Save"/>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+        <!--        <div class="modal fade" id="customer3" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog w-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3><i class="fa fa-user m-r-5"></i> Thêm khách hàng</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal" method="POST">
+                                            <fieldset>
+                                                 Số phòng
+                                                <div class="col-md-4 form-group">
+                                                    <input type="hidden" name="roomId" value=""/>
+                                                    <label class="control-label">Tên khách hàng:</label>
+                                                    <input type="text" name="customerName" placeholder="" value="" class="form-control">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="hidden" name="roomId" value=""/>
+                                                    <label class="control-label">Số điện thoại:</label>
+                                                    <input type="text" name="customerPhone" placeholder="" value="" class="form-control">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="hidden" name="roomId" value=""/>
+                                                    <label class="control-label">Địa chỉ:</label>
+                                                    <input type="text" name="customerAddress" placeholder="" value="" class="form-control">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="hidden" name="roomId" value=""/>
+                                                    <label class="control-label">CMND:</label>
+                                                    <input type="text" name="customerCMND" placeholder="" value="" class="form-control">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="h  idden" name="roomId" value=""/>
+                                                    <label class="control-label">Email:</label>
+                                                    <input type="text" name="customerEmail" placeholder="" value="" class="form-control">
+                                                </div>
+                                                <div class="col-md-12 form-group user-form-group">
+                                                    <div class="pull-right">
+                                                        <input type="submit" name="save-add-room-id" class="btn btn-add btn-sm" value="Save"/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
                             </div>
                         </div>
+                         /.modal-content 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
+                     /.modal-dialog 
+                </div>-->
         <!-- /.modal -->
         <!-- update Room -->
         <div class="modal fade" id="customer1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -166,11 +150,12 @@ get_sidebar();
                                     <fieldset>
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
-                                            <input type="hidden" name="customerId" value=""/>
+                                            <!--<input type="hidden" name="customerId" value=""/>-->
                                             <label class="control-label">Tên khách hàng:</label>
                                             <input type="text" name="customerName" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
+                                            <input type="hidden" name="customerId" value=""/>
                                             <label class="control-label">Số điện thoại:</label>
                                             <input type="text" name="customerPhone" placeholder="" value="" class="form-control">
                                         </div>
@@ -186,11 +171,14 @@ get_sidebar();
                                             <label class="control-label">Email:</label>
                                             <input type="text" name="customerEmail" placeholder="" value="" class="form-control">
                                         </div>
+                                        <!--Trạng thái-->
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Trạng thái:</label>
-                                            <select class="form-control" name="roomState" id="roomState">
-                                                <option value="0">Còn trống</option>
-                                                <option value="1">Đã đặt</option>
+                                            <select class="form-control" name="customerState" id="customerState">
+                                                <option value="0">Chưa ở</option>
+                                                <option value="1">Đang ở</option>
+                                                <option value="2">Chưa nhận phòng</option>
+                                                <option value="3">Hủy phòng</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
@@ -214,36 +202,36 @@ get_sidebar();
         <!-- /.modal -->
         <!-- Modal -->    
         <!-- delete Room -->
-        <div class="modal fade" id="customer2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modal-header-primary">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Xóa phòng</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form class="form-horizontal" method="POST">
-                                    <fieldset>
-                                        <div class="col-md-12 form-group user-form-group">
-                                            <label class="control-label">Bạn có chắc chắn muốn xóa phòng: <span id="roomNumber_del"></span></label>
-                                            <div class="pull-right">
-                                                <input type="hidden" name="roomId" value=""/>
-                                                <input type="button" class="btn btn-danger btn-sm"  data-dismiss="modal" value="NO"/>
-                                                <input type="submit" name="btn-delete-room" class="btn btn-add btn-sm" value="YES"/>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+        <!--        <div class="modal fade" id="customer2" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3><i class="fa fa-user m-r-5"></i> Xóa phòng</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal" method="POST">
+                                            <fieldset>
+                                                <div class="col-md-12 form-group user-form-group">
+                                                    <label class="control-label">Bạn có chắc chắn muốn xóa phòng: <span id="roomNumber_del"></span></label>
+                                                    <div class="pull-right">
+                                                        <input type="hidden" name="roomId" value=""/>
+                                                        <input type="button" class="btn btn-danger btn-sm"  data-dismiss="modal" value="NO"/>
+                                                        <input type="submit" name="btn-delete-room" class="btn btn-add btn-sm" value="YES"/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                         /.modal-content 
                     </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
+                     /.modal-dialog 
+                </div>-->
         <!-- /.modal -->
         <!--Thiết kế phân trang-->
 

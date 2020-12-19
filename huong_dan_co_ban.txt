@@ -3,3 +3,15 @@
 2. libraries: ckeditor: config.is: thay đường dẫn dòng 13-23
 3. config: config.php: thay đường dẫn dòng 15
 4. cách chạy 1 đường dẫn: http://localhost/Backend/DoAn/QuanLyKhachSan1/?mod=admin&controller=login&action=login
+
+
+nhân viên sẽ thêm khách hàng trong trang phòng, nếu phòng còn trống thì sẽ hiện nút đặt phòng, sẽ nhập tên khách hàng,
+chứng minh nhân dân, ngày đặt, ngày trả, lưu vô  bảng book room, detail_book_room, nếu khách hàng đó đã ghé
+làm nhận phòng.
+
+đặt phòng, hiện danh sách người đặt phòng, nút đặt phòng, 
+
+
+tiếp tân tự xếp phòng và cập nhật lại trạng thái phòng
+
+số phòng khi ng khách Đặt sẽ dc xét theo ngày. 

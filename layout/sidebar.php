@@ -24,16 +24,18 @@
                     <li><a href="?mod=room&controller=room&action=list_room">Danh sách phòng</a></li>
                 </ul>
             </li>
+            <li><a href="?mod=customer&controller=customer&action=list_customer"><i class="fa fa-users"></i><span>Quản lý khách hàng</span></a></li>
+            <!--QUẢN LÝ ĐẶT PHÒNG-->
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i><span>Quản lý khách hàng</span>
+                    <i class="fa fa-home"></i><span>Quản lý đặt phòng</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=customer&controller=customer&action=list_customer">Tài khoản khách hàng</a></li>
-                    <li><a href="?mod=customer&controller=customer&action=list_customer">Danh sách khách hàng</a></li>
+                    <li><a href="?mod=book_room&controller=book_room">Đặt phòng</a></li>
+                    <li><a href="?mod=room&controller=room&action=list_room">Danh sách phòng</a></li>
                 </ul>
             </li>
         </ul>

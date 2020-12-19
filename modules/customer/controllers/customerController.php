@@ -11,7 +11,7 @@ function indexAction() {
 }
 
 function list_customerAction() {
-    load('helper', 'format');
+    load('helper', 'state_customer');
     load('lib', 'pagging');
     //Đêm số dòng trên bảng database
     $num_rows = get_num_row("`customer`");
@@ -34,7 +34,7 @@ function list_customerAction() {
     $data['get_pagging'] = $get_pagging;
     
     //update_room khi tồn tại nut lưu
-    if(isset($_POST['save-update-customer-id'])){
+    if (isset($_POST['save-update-customer-id'])) {
         update_customerAction();
     }
     //delete_room_id khi có tồn tại nút yes
@@ -49,43 +49,57 @@ function list_customerAction() {
 }
 
 function update_customerAction() {
-    if(isset($_POST['save-update-customer-id'])){
-        $room_id=$_POST['roomId'];
-        $data=array(
-            'roomNumber'=>$_POST['roomNumber'],
-            'typeCode'=>$_POST['roomType'],
-            'state'=>$_POST['roomState']
+    if (isset($_POST['save-update-customer-id'])) {
+        
+        $cus_code = $_POST['customerId'];
+        $data = array(
+            'name' => $_POST['customerName'],
+            'phone' => $_POST['customerPhone'],
+            'address' => $_POST['customerAddress'],
+            'cmnd' => $_POST['customerCMND'],
+            'email' => $_POST['customerEmail'],
+            'state' => $_POST['customerState'],
         );
-        update_info_room_id($data,$room_id);
-        redirect("?mod=room&controller=room&action=list_room");
+        update_info_customer_id($data, $cus_code);
+        redirect("?mod=customer&controller=customer&action=list_customer");
     }
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
-        $room_id = get_room_id($id);
+        $customer_id = get_customer_id($id);
+        //Alert
+//        echo '<script language="javascript">';
+//        echo 'alert("message successfully sent")';
+//        echo '</script>';
+        // end alert
         $result = array(
-            'id' => $room_id['id'],
-            'roomNuber' => $room_id['roomNumber'],
-            'typeCode' => $room_id['typeCode'],
-            'state' => $room_id['state']
+            'cus_code' => $customer_id['cus_code'],
+            'name' => $customer_id['name'],
+            'phone' => $customer_id['phone'],
+            'address' => $customer_id['address'],
+            'cmnd'=>$customer_id['cmnd'],
+            'email' => $customer_id['email'],
+            'state'=>$customer_id['state']
         );
         echo json_encode($result);
+        //echo $customer_id['email'];
     }
+   
 }
 
-function delete_roomAction(){
-    if(isset($_POST['btn-delete-room'])){
-        $id=$_POST['roomId'];
+function delete_roomAction() {
+    if (isset($_POST['btn-delete-room'])) {
+        $id = $_POST['roomId'];
         delete_room_id($id);
         redirect("?mod=room&controller=room&action=list_room");
     }
 }
 
-function add_roomAction(){
-    if(isset($_POST['save-add-room-id'])){
-        $data=array(
-            'roomNumber'=>$_POST['roomNumber'],
-            'typeCode'=>$_POST['roomType'],
-            'state'=>$_POST['roomState']
+function add_roomAction() {
+    if (isset($_POST['save-add-room-id'])) {
+        $data = array(
+            'roomNumber' => $_POST['roomNumber'],
+            'typeCode' => $_POST['roomType'],
+            'state' => $_POST['roomState']
         );
         add_room($data);
         redirect("?mod=room&controller=room&action=list_room");
