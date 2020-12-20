@@ -53,3 +53,30 @@ ul.pagging li.active a{
     left: 15px;
     top: 15px;
 }
+
+.fl-left{
+    float: left;
+}
+.fl-right{
+    float: right;
+}
+.cart-icon{
+
+    font-size: 48px;
+    color: #009688;
+    width: 68px;
+    margin-top: -4px;
+    line-height: 0;
+}
+.num-order-cart{
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    line-height: 10px;
+    padding: 5px 5px;
+    border-radius: 50em;
+    height: 26px;
+    width: 26px;
+    border: 1px solid #fff;
+    font-size: 20px;
+}

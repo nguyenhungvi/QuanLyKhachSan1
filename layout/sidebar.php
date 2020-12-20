@@ -34,7 +34,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="?mod=book_room&controller=book_room">Đặt phòng</a></li>
+                    <li><a href="?mod=book_room">Đặt phòng</a></li>
                     <li><a href="?mod=room&controller=room&action=list_room">Danh sách phòng</a></li>
                 </ul>
             </li>

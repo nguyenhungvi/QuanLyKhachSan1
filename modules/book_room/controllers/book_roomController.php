@@ -6,8 +6,6 @@ function construct() {
 }
 
 function indexAction() {
-    $get_list_room_type=get_list_room_type();
-    $data['get_list_room_type']=$get_list_room_type;
-    load_view('book_room',$data);
+    
 }
 

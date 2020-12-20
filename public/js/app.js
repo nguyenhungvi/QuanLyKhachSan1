@@ -124,7 +124,7 @@ $(document).ready(function () {
 });
 
 //Customer
-//ajax update_loạiphong
+//ajax update_customer
 $(document).ready(function () {
     $("button[name='customerUpdate']").click(function () {
         var id = $(this).attr('update-customer-id');
@@ -158,5 +158,61 @@ $(document).ready(function () {
         });
     });
 
+
+});
+
+
+//Cart
+//ajax create_roomtype_cart
+$(document).ready(function () {
+    $("button[name='btn-add-roomtype-cart']").click(function () {
+        var id = $("#roomType_select option:selected").attr('value');
+        //var count_room = $("#roomType_select option:selected").attr('count_room');
+        var count_room=$("input[name='count_room']").val();
+        console.log(id, count_room);
+        var data = {id: id,count_room: count_room};
+        $.ajax({
+            url: '?mod=book_room&controller=index&action=index', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            dataType: 'text', //html,text, script
+            //dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+//                console.log(data.hihi);
+                alert("Bạn đã thêm vào giỏ hàng thành công.");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+});
+
+//ajax delete_Loại Phòng_Cart
+$(document).ready(function () {
+
+    $("button[name='cart_roomtypeDelete']").click(function () {
+        var id = $(this).attr('del-cart-room-type-id');
+        var data = {id: id};
+        console.log(id);
+        $.ajax({
+            url: '?mod=book_room&action=cart', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            dataType: 'text', //html,text, script
+            //dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
 
 });

@@ -20,7 +20,6 @@ $(document).ready(function () {
 
 // lấy id của hình ảnh muốn xóa đưa vô value của roomtypedetail_img_Id trong #custome2
 $(document).ready(function () {
-
     $("button[name='roomtypedetail_img_Delete']").click(function () {
         var id = $(this).attr('del-room-type-detail-img-id');
         $("input[name='roomtypedetail_img_Id']").val(id);
@@ -30,10 +29,10 @@ $(document).ready(function () {
 
 // lấy count_room của select dc chọn 
 $(document).ready(function () {
-
     $("#roomType_select").change(function () {
+        var id = $("#roomType_select option:selected").attr('value');
         var count_room = $("#roomType_select option:selected").attr('count_room');
-        console.log(count_room);
-        $("input[name='count_room']").attr('max',count_room);
+        console.log(id);
+        $("input[name='count_room']").attr('max', count_room);
     });
 });
