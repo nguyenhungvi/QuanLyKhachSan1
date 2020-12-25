@@ -21,10 +21,7 @@ get_sidebar();
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="btn-group">
                     <div class="buttonexport" id="buttonlist"> 
-<!--                        <a class="btn btn-add" href="?mod=room&action=add"> <i class="fa fa-plus"></i> Thêm phòng
-                        </a> -->
                         <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
-                        <button type="button" name="roomtype_update_price_all" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Cập nhật giá phòng</button>
                     </div>
                     <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
                     <ul class="dropdown-menu exp-drop" role="menu">
@@ -58,7 +55,7 @@ get_sidebar();
                                         <td><p><?php echo $t; ?></p></td>
                                         <td><?php echo $room_type['name']; ?></td>
                                         <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
-        <!--                                        <td><?php //echo currency_format($room_type['price']);  ?></td>-->
+        <!--                                        <td><?php //echo currency_format($room_type['price']);   ?></td>-->
                                         <td><input type="text" value="<?php echo number_format($room_type['price']); ?>" disabled="" class="text-center border-price-roomtype" id="roomtype_price"/></td>
                                         <td>
                                             <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>

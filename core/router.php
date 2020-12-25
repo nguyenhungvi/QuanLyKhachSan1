@@ -16,5 +16,9 @@ call_function(array('construct', $action_name));
 
 //Kiểm tra login và 
 if(!is_login()&& get_action()!='login'){
+    unset($_SESSION['is_login']);
+    unset($_SESSION['user_login']);
+    unset($_SESSION['time_login']);
+    unset($_SESSION['role']);
     redirect("?mod=admin&controller=login&action=login");
 }

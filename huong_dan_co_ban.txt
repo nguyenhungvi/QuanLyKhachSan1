@@ -15,3 +15,13 @@ làm nhận phòng.
 tiếp tân tự xếp phòng và cập nhật lại trạng thái phòng
 
 số phòng khi ng khách Đặt sẽ dc xét theo ngày. 
+
+làm thống kê theo ngày tháng năm, loại phòng dc ưa chuộng
+
+phân quyền: nếu có id=1 này thì làm dc mọi thứ
+
+1 bảng chứa các đường link
+
+
+==================
+lấy session role ktra nếu có quyền đó thì dc làm những gì đó

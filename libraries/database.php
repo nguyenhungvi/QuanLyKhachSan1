@@ -92,6 +92,14 @@ function db_delete($table, $where) {
     return mysqli_affected_rows($conn);
 }
 
+//xóa tất cả
+function db_delete_all($table) {
+    global $conn;
+    $query_string = "DELETE FROM " . $table;
+    db_query($query_string);
+    return mysqli_affected_rows($conn);
+}
+
 function escape_string($str) {
     global $conn;
     return mysqli_real_escape_string($conn, $str);

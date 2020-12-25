@@ -37,10 +37,13 @@ function loginAction(){
         //Kết luận
         if(empty($error)){
             if(check_login($username, $password)){
+                //Lấy quyền
+                $get_role=get_role($username, $password);
                 //Lưu trữ phiên đăng nhập
                 $_SESSION['is_login']=true;
                 $_SESSION['user_login']=$username;
                 $_SESSION['time_login']= time();
+                $_SESSION['role']=$get_role['role'];
                 //Chuyển hướng vào hệ thống
                 redirect();
             }else{
@@ -57,6 +60,7 @@ function logoutAction(){
     unset($_SESSION['is_login']);
     unset($_SESSION['user_login']);
     unset($_SESSION['time_login']);
+    unset($_SESSION['role']);
     redirect("?mod=admin&controller=login&action=login");
 }
 ?>

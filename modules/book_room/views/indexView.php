@@ -43,27 +43,11 @@ get_sidebar();
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form>
-                            <!--Ngày đặt phòng-->
-<!--                            <div class="form-group">
-                                <label>Ngày đặt phòng</label>
-                                <div class=" input-group date form_date">
-                                    <input id='minMaxExample' type="text" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
-                                </div>
-                            </div>
-                            Ngày trả phòng
-                            <div class="form-group">
-                                <label>Ngày trả phòng</label>
-                                <div class=" input-group date form_date">
-                                    <input id='minMaxExample' type="text" class="form-control years"><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
-                                </div>
-                            </div>-->
-                            <!--Loại phòng-->
+                        <form method="POST">
                             <div class="form-group">
                                 <label>Loại phòng</label>
                                 <!--<input type="text" class="form-control" placeholder="Nhập loại phòng" required>-->
                                 <select class="form-control" name="roomType" id="roomType_select">
-                                    <option>------</option>
                                     <?php
                                     foreach ($get_list_room_type as $room_type) {
                                         ?>
@@ -79,9 +63,7 @@ get_sidebar();
                                 <input type="number" name="count_room" min="1" max="" value="1" class="form-control">
                             </div>
                             <div class="form-group text-center">
-                                <button type="button" name="btn-add-roomtype-cart" class="btn btn-add"><i class="fa fa-check"></i> Thêm vào giỏ hàng
-                                </button>
-                                <!--<input type="submit" name="btn-AddCart-RoomType" class="btn btn-add" value="Thêm vào giỏ hàng"/>-->
+                                <input type="submit" name="btn-add-roomtype-cart" class="btn btn-add" value="Thêm vào giỏ hàng"/>
                             </div>
                         </form>
                     </div>

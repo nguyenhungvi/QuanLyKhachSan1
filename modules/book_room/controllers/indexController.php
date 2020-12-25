@@ -18,12 +18,21 @@ function indexAction() {
     
 
     //Xử lý ajax them dữ liệu vào cart
-    if (isset($_POST['id'], $_POST['count_room'])) {
+//    if (isset($_POST['id'], $_POST['count_room'])) {
+//        $data_add_cart = array(
+//            'id_roomtype' => $_POST['id'],
+//            'number_room' => $_POST['count_room']
+//        );
+//        add_cart($data_add_cart);
+//        redirect();
+//    }
+    if(isset($_POST['btn-add-roomtype-cart'])){
         $data_add_cart = array(
-            'id_roomtype' => $_POST['id'],
+            'id_roomtype' => $_POST['roomType'],
             'number_room' => $_POST['count_room']
         );
         add_cart($data_add_cart);
+        redirect('?mod=book_room');
     }
     load_view('index', $data);
 }
