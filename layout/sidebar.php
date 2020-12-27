@@ -7,7 +7,7 @@
         <!-- sidebar menu -->
         <ul class="sidebar-menu">
             <li class="active">
-                <a href="index.html"><i class="fa fa-tachometer"></i><span>Trang chủ</span>
+                <a href="?"><i class="fa fa-tachometer"></i><span>Trang chủ</span>
                     <span class="pull-right-container">
                     </span>
                 </a>
@@ -25,7 +25,7 @@
                 </ul>
             </li>
             <li><a href="?mod=customer&controller=customer&action=list_customer"><i class="fa fa-users"></i><span>Quản lý khách hàng</span></a></li>
-            <li><a href="?mod=book_room"><i class="fa fa-home"></i><span>Quản lý đặt phòng</span></a></li>
+            <!--<li><a href="?mod=book_room"><i class="fa fa-home"></i><span>Quản lý đặt phòng</span></a></li>-->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-home"></i><span>Quản lý đặt phòng</span>

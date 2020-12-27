@@ -46,10 +46,11 @@ get_sidebar();
                                 <tr class="info">
                                     <th class="col-md-1">STT</th>
                                     <th class="col-md-3">Tên loại phòng</th>
-                                    <th class="col-md-2">Hình ảnh</th>
                                     <th class="col-md-1">Giá($)</th>
-                                    <th class="col-md-2">Số lượng</th>
-                                    <th class="col-md-2">Thành tiền</th>
+                                    <th class="col-md-1">Số lượng</th>
+                                    <th class="col-md-2">Ngày nhận phòng</th>
+                                    <th class="col-md-2">Ngày trả phòng</th>
+                                    <th class="col-md-1">Thành tiền</th>
                                     <th class="col-md-1">Chỉnh sửa</th>
                                 </tr>
                             </thead>
@@ -63,11 +64,13 @@ get_sidebar();
                                         <tr>
                                             <td><p><?php echo $t; ?></p></td>
                                             <td><?php echo $info_room['name']; ?></td>
-                                            <td><img src="public/images/room/<?php echo $info_room['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
-                                            <td><input type="text" value="<?php echo number_format($info_room['price']); ?>" disabled="" class="text-center border-price-roomtype"/></td>
+                                            <td><?php echo number_format($info_room['price']); ?></td>
                                             <td><?php echo $info_room['number_room']; ?></td>
+                                            <td><?php echo $info_room['check_in']; ?></td>
+                                            <td><?php echo $info_room['check_out']; ?></td>
                                             <td><?php echo $info_room['total_sum']; ?></td>
                                             <td>
+                                                <button type="button" name="cartUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-cart-id="<?php echo $info_room['id_roomtype'];  ?>" title="Cập nhật giỏ hàng"><i class="fa fa-pencil"></i></button>
                                                 <a href="?mod=book_room&action=cart&del-cart-room-type-id=<?php echo $info_room['id_roomtype']; ?>" name="cart_roomtypeDelete" class="btn btn-danger btn-sm" del-cart-room-type-id="<?php echo $info_room['id_roomtype']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </a>
                                             </td>
                                         </tr>
@@ -87,11 +90,64 @@ get_sidebar();
                     <?php
                 } else {
                     ?>
-                <p>Chưa có phòng được đặt, vui lòng click <a href="?mod=book_room"><u>Tại đây</u></a> để đặt hàng</p>
+                    <p>Chưa có phòng được đặt, vui lòng click <a href="?mod=book_room"><u>Tại đây</u></a> để đặt hàng</p>
                     <?php
                 }
                 ?>
             </div>
+        </div>
+        <!-- update Room -->
+        <div class="modal fade" id="customer1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog w-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật giỏ hàng</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal" enctype="multipart/form-data" method="POST">
+                                    <fieldset>
+                                        <!-- Số phòng-->
+                                        <div class="col-md-4 form-group">
+                                            <input type="hidden" name="cartId" value=""/>
+                                            <label class="control-label">Số lượng:</label>
+                                            <input type="number" name="cartNumber" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label">Ngày nhận phòng:</label>
+                                            <input type="datetime" id='received-date' name="receiveddate_BookRoom"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label">Ngày trả phòng:</label>
+                                            <input type="datetime" id='pay-date' name="paydate_BookRoom" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label">Số người lớn:</label>
+                                            <input type="number" name="adults_BookRoom" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label">Số trẻ em:</label>
+                                            <input type="number" name="childrens_BookRoom" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-12 form-group user-form-group">
+                                            <div class="pull-right">
+                                                <input type="submit" name="save-update-cart-id" class="btn btn-add btn-sm" value="Save"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
     </section>
     <!-- /.content -->

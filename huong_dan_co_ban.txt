@@ -25,3 +25,8 @@ phân quyền: nếu có id=1 này thì làm dc mọi thứ
 
 ==================
 lấy session role ktra nếu có quyền đó thì dc làm những gì đó
+
+tạo bảng chart
+có chứa tháng và tổng tiền.
+
+SELECT DATE_FORMAT(pay_date,'%Y-%m')AS Month, SUM(total) FROM `bookroom` GROUP BY Month

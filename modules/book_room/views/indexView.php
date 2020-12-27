@@ -45,7 +45,7 @@ get_sidebar();
                     <div class="panel-body">
                         <form method="POST">
                             <div class="form-group">
-                                <label>Loại phòng</label>
+                                <label class="lbl-book">Loại phòng</label>
                                 <!--<input type="text" class="form-control" placeholder="Nhập loại phòng" required>-->
                                 <select class="form-control" name="roomType" id="roomType_select">
                                     <?php
@@ -59,8 +59,44 @@ get_sidebar();
                             </div>
                             <!--Số lượng-->
                             <div class="form-group">
-                                <label>Số lượng</label>
+                                <label class="lbl-book">Số lượng</label>
                                 <input type="number" name="count_room" min="1" max="" value="1" class="form-control">
+                            </div>
+                            <!--Ngày đặt-->
+                            <div class="form-group">
+                                <div class="field-wl">
+                                    <label class="lbl-book">Ngày nhận phòng</label>
+                                    <div class=" input-group date form_date">
+                                        <input type="text" id='received-date' name="checkin_BookRoom"  class="form-control years" value="<?php echo date("Y-m-d")?>" /><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--ngày trả-->
+                            <div class="form-group">
+                                <div class="field-wr">
+                                    <label class="lbl-book">Ngày trả phòng</label>
+                                    <div class=" input-group date form_date">
+                                        <input type="text" id='pay-date' name="checkout_BookRoom" class="form-control years" value="<?php echo date("Y-m-d")?>"/><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Người lớn-->
+                            <div class="form-group">
+                                <div class="field-wl">
+                                    <label class="lbl-book">Số người lớn</label>
+                                    <div class=" input-group date form_date">
+                                        <input type="number"name="adults_BookRoom"  class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Trẻ em-->
+                            <div class="form-group">
+                                <div class="field-wr">
+                                    <label class="lbl-book">Số trẻ em</label>
+                                    <div class=" input-group date form_date">
+                                        <input type="number" name="childrens_BookRoom" class="form-control"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <input type="submit" name="btn-add-roomtype-cart" class="btn btn-add" value="Thêm vào giỏ hàng"/>

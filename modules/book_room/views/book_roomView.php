@@ -45,14 +45,6 @@ get_sidebar();
                                 <label class="lbl-book">Email</label>
                                 <input type="email" name="email_BookRoom" class="input-book"/>
                             </div>
-                            <div class="field-wl">
-                                <label class="lbl-book">Số người lớn</label>
-                                <input type="number" name="adults_BookRoom" class="input-book"/>
-                            </div>
-                            <div class="field-wr">
-                                <label class="lbl-book">Số trẻ em</label>
-                                <input type="number" name="children_BookRoom" class="input-book"/>
-                            </div>
                             <div class="">
                                 <label class="lbl-book">Địa chỉ</label>
                                 <!--<input type="text" class="input-book"/>-->
@@ -63,18 +55,6 @@ get_sidebar();
                     <div class="col-sm-5">
                         <h3  class="title-book">Thông tin đặt phòng</h2>
                             <div class="detail">
-                                <div class="field-wl">
-                                    <label class="lbl-book">Ngày nhận phòng</label>
-                                    <div class=" input-group date form_date">
-                                        <input type="text" id='received-date' name="receiveddate_BookRoom"  class="form-control years" /><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
-                                    </div>
-                                </div>
-                                <div class="field-wr">
-                                    <label class="lbl-book">Ngày trả phòng</label>
-                                    <div class=" input-group date form_date">
-                                        <input type="text" id='pay-date' name="paydate_BookRoom" class="form-control years"/><span class="input-group-addon"><a href="#"><i class="fa fa-calendar"></i></a></span>
-                                    </div>
-                                </div>
                                 <?php
                                 if (!empty($get_info_cart)) {
 //                                    show_array($get_info_cart);
@@ -82,38 +62,28 @@ get_sidebar();
                                     <table class="shop-table">
                                         <thead>
                                             <tr>
-                                                <td>Loại phòng</td>
+                                                <td>Loại phòng x Số phòng x Số ngày</td>
                                                 <td>Tổng<td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $tong_ngay = 0;
                                             $tong_tien_1_ngay = 0;
                                             foreach ($get_info_cart as $info_cart) {
-                                                $tong_ngay = $tong_ngay + $info_cart['number_room'];
                                                 $tong_tien_1_ngay = $tong_tien_1_ngay + $info_cart['total_sum'];
                                                 ?>
                                                 <tr>
-                                                    <td><span><?php echo $info_cart['name']; ?></span><strong> x<span><?php echo $info_cart['number_room']; ?> </span></strong></td>
+                                                    <td><span><?php echo $info_cart['name']; ?></span> x <span><?php echo $info_cart['number_room']; ?> </span></span> x <span><?php echo $info_cart['number_day']; ?> </span></td>
                                                     <td><?php echo $info_cart['total_sum']; ?></td>
                                                 </tr>
                                                 <?php
                                             }
-                                            //$tong_tien_n_ngay=$tong_tien_1_ngay*$tong_ngay;
                                             ?>
-                                        <input type="hidden" id="tong_tien_1_ngay" value="<?php echo $tong_tien_1_ngay; ?>"/>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td><span>Tổng tiền <span id="tong_ngayss">0</span> ngày:</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span><?php echo $tong_tien_1_ngay; ?></span><span> x </span><span id="tong_ngay">0</span></td>
-                                                <td><span id="tong_tien_n_ngay">0</span> </td>
-                                            </tr>
-                                            <tr>
-
+                                                <td><span>Tổng tiền: (VND)</span></td>
+                                                <td><span><?php echo $tong_tien_1_ngay; ?></span></td>
                                             </tr>
                                         </tfoot>
                                     </table>

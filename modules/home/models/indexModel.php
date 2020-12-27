@@ -1,11 +1,6 @@
 <?php
 
-//function get_list_users() {
-//    $result = db_fetch_array("SELECT * FROM `tbl_users`");
-//    return $result;
-//}
-//
-//function get_user_by_id($id) {
-//    $item = db_fetch_row("SELECT * FROM `tbl_users` WHERE `user_id` = {$id}");
-//    return $item;
-//}
+function get_revenue_month(){
+    $result= db_fetch_array("SELECT DATE_FORMAT(pay_date,'%m')AS Month, SUM(total) as SUM FROM `bookroom` WHERE YEAR(pay_date)=YEAR(NOW()) AND state=1 GROUP BY Month");
+    return $result;
+}

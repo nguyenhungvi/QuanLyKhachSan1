@@ -20,7 +20,7 @@ function indexAction() {
     $page = isset($_GET['page']) ? (int) ($_GET['page']) : 1;
     //Chỉ số bắt đầu chạy
     $start = ($page - 1) * $num_per_page;
-    $list_bookroom = get_list_bookroom($start, $num_per_page, "");
+    $list_bookroom = get_list_bookroom($start, $num_per_page, "bookroom.cus_code=customer.cus_code");
     //đường dẫn theo từng pagging
     $get_pagging = get_pagging($num_page, $page, "?mod=bill");
     //truyền dữ liệu từ controller qua cho view
@@ -28,9 +28,31 @@ function indexAction() {
     $data['start'] = $start;
     $data['get_pagging'] = $get_pagging;
 
-    //update_room khi tồn tại nut lưu
-    if (isset($_POST['save-update-customer-id'])) {
-        update_customerAction();
+    //update_bill khi tồn tại nut lưu
+    if (isset($_POST['save-update-bill-id'])) {
+        updateAction();
     }
-    load_view('index',$data);
+    load_view('index', $data);
+}
+
+function updateAction() {
+    if (isset($_POST['save-update-bill-id'])) {
+        $id = $_POST['billId'];
+        $data_bill = array(
+            'state' => $_POST['billState'],
+        );
+        update_info_bill($data_bill, $id);
+        redirect('?mod=bill');
+    }
+    if (isset($_POST['id'])) {
+        //echo $_POST['id'];
+        $bookroom_id = get_bookroom_id($_POST['id']);
+        $result = array(
+            'id' => $bookroom_id['id'],
+            'name' => $bookroom_id['name'],
+            'total' => $bookroom_id['total'],
+            'state' => $bookroom_id['state'],
+        );
+        echo json_encode($result);
+    }
 }

@@ -11,8 +11,11 @@ get_sidebar();
         </div>
         <div class="header-title">
             <h1>Quản lý đặt phòng</h1>
-            <small>Thông tin hóa đơn</small>
+            <small>Thông tin chi tiết hóa đơn</small>
         </div>
+        <?php
+        //show_array($list_detail_bookroom);
+        ?>
     </section>
     <!-- Main content -->
     <section class="content content-wp">
@@ -34,38 +37,38 @@ get_sidebar();
                         <thead>
                             <tr class="info">
                                 <th class="col-md-1">STT</th>
-                                <th class="col-md-3">Tên khách hàng</th>
-                                <th class="col-md-3">Tổng tiền</th>
-                                <th class="col-md-3">Trạng thái</th>
+                                <th class="col-md-3">Loại phòng</th>
+                                <th class="col-md-2">Giá phòng</th>
+                                <th class="col-md-2">Số lượng phòng</th>
+                                <th class="col-md-2">Ngày đặt phòng</th>
                                 <th class="col-md-2">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            if (!empty($list_bookroom)) {
-                                $t = $start;
+                            if (!empty($list_detail_bookroom)) {
+                                $t = 0;
                                 //global $room_id;
-                                foreach ($list_bookroom as $bookroom) {
+                                foreach ($list_detail_bookroom as $detail_bookroom) {
                                     $t++;
                                     ?>
                                     <tr>
-                                        <td><?php echo $t; ?></td>
-                                        <td><?php echo $bookroom['name']; ?></td>
-                                        <td><?php echo $bookroom['total']; ?></td>
-                                        <td><span class="<?php echo color_state_Bill($bookroom['state']); ?>"><?php echo state_Bill($bookroom['state']); ?></span></td>
-                                        <td>
-                                            <button type="button" name="billUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-bill-id="<?php echo $bookroom['id']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <a name="roomtypeDetail" href="?mod=bill&controller=detail_bookroom&id=<?php echo $bookroom['id']; ?><?php
-                                            if (isset($_GET['page'])) {
-                                                echo "&page={$_GET['page']}";
-                                            }
-                                            ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $bookroom['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
+                                <form method="POST">
+                                    <input type="hidden" name="idDetailBookRoom" value="<?php echo $detail_bookroom['id']; ?>" />
+                                    <td><?php echo $t; ?></td>
+                                    <td><?php echo $detail_bookroom['name']; ?></td>
+                                    <td><?php echo $detail_bookroom['price']; ?></td>
+                                    <td><input type="number" min="0" value="<?php echo $detail_bookroom['number_room']; ?>" name="numberDetailBookRoom" style="width: 60px;"></td>
+                                    <td><?php echo $detail_bookroom['date_set']; ?></td>
+                                    <td>
+                                        <input type="submit" name="btn-save-update-number-room" class="btn btn-add btn-sm" value="save"/>
+                                    </td>
+                                </form>
+                                </tr>
+                                <?php
                             }
-                            ?>
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -86,9 +89,20 @@ get_sidebar();
                                     <fieldset>
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
-                                            <input type="hidden" name="billId" value=""/>
+                                            <!--<input type="hidden" name="customerId" value=""/>-->
                                             <label class="control-label">Tên khách hàng:</label>
                                             <p type="text" name="billName" placeholder="" value="" class="form-control"></p>
+                                        </div>
+                                        <div class="col-md-4 form-group date form_date">
+                                            <input type="hidden" name="billId" value=""/>
+                                            <label class="control-label">Ngày nhận phòng:</label>
+                                            <!--<input type="text" name="billReceived_date" placeholder="" value="" class="form-control">-->
+                                            <input type="datetime" id='received-date' name="receiveddate_BookRoom"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                        </div>
+                                        <div class="col-md-4 form-group date form_date">
+                                            <label class="control-label">Ngày trả phòng</label>
+                                            <!--<input type="text" name="billPay_date" placeholder="" value="" class="form-control">-->
+                                            <input type="datetime" id='pay-date' name="paydate_BookRoom" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Tổng tiền:</label>
@@ -123,9 +137,6 @@ get_sidebar();
         <!-- /.modal -->
         <!--Thiết kế phân trang-->
     </section>
-    <?php
-    echo $get_pagging;
-    ?>
     <div class="clearfix"></div>
     <!-- /.content -->
 </div>

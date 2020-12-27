@@ -35,7 +35,7 @@ $(document).ready(function () {
 
 
 });
-
+//===============================================================================
 //ajax delete room
 $(document).ready(function () {
 
@@ -63,6 +63,7 @@ $(document).ready(function () {
     });
 
 });
+//===============================================================================
 
 //Loại Phòng
 //ajax update_loạiphong
@@ -91,9 +92,8 @@ $(document).ready(function () {
             }
         });
     });
-
-
 });
+//===============================================================================
 
 //ajax delete_Loại Phòng
 $(document).ready(function () {
@@ -122,6 +122,7 @@ $(document).ready(function () {
     });
 
 });
+//===============================================================================
 
 //Customer
 //ajax update_customer
@@ -157,38 +158,8 @@ $(document).ready(function () {
             }
         });
     });
-
-
 });
-
-
-//Cart
-//ajax create_roomtype_cart
-//$(document).ready(function () {
-//    $("button[name='btn-add-roomtype-cart']").click(function () {
-//        var id = $("#roomType_select option:selected").attr('value');
-//        //var count_room = $("#roomType_select option:selected").attr('count_room');
-//        var count_room=$("input[name='count_room']").val();
-//       // console.log(id, count_room);
-//        var data = {id: id,count_room: count_room};
-//        $.ajax({
-//            url: '?mod=book_room&controller=index&action=index', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
-//            method: 'POST', //POST OR GET, mặc định GET
-//            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
-//            dataType: 'text', //html,text, script
-//            //dataType: 'json', //dataType kiểu json
-//            success: function (data) {
-//                //Xử lý dữ liệu trả về
-//                console.log(data);
-//                alert("Bạn đã thêm vào giỏ hàng thành công.");
-//            },
-//            error: function (xhr, ajaxOptions, thrownError) {
-//                alert(xhr.status);
-//                alert(thrownError);
-//            }
-//        });
-//    });
-//});
+//===============================================================================
 
 //ajax delete_Loại Phòng_Cart
 $(document).ready(function () {
@@ -205,7 +176,7 @@ $(document).ready(function () {
             //dataType: 'json', //dataType kiểu json
             success: function (data) {
                 //Xử lý dữ liệu trả về
-                
+
                 console.log(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -215,4 +186,69 @@ $(document).ready(function () {
         });
     });
 
+});
+//===============================================================================
+//ajax Cart
+$(document).ready(function () {
+    $("button[name='cartUpdate']").click(function () {
+        var id = $(this).attr('update-cart-id');
+        var data = {id: id};
+        console.log(id);
+        $.ajax({
+            url: '?mod=book_room&action=update_cart', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='cartId']").val(data.id_roomtype);
+                $("input[name='cartNumber']").val(data.number_room);
+                $("input[name='receiveddate_BookRoom']").val(data.check_in);
+                $("input[name='paydate_BookRoom']").val(data.check_out);
+                $("input[name='adults_BookRoom']").val(data.number_adults);
+                $("input[name='childrens_BookRoom']").val(data.number_childrens);
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+});
+
+//================================================================================
+//ajax Bill
+$(document).ready(function () {
+    $("button[name='billUpdate']").click(function () {
+        var id = $(this).attr('update-bill-id');
+        var data = {id: id};
+        var billState;
+        console.log(id);
+        $.ajax({
+            url: '?mod=bill&action=update', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='billId']").val(data.id);
+                $("p[name='billName']").text(data.name);
+                $("p[name='billTotal']").text(data.total);
+                billState = data.state;
+                $("#billState>option[value='" + billState + "']").attr('selected', 'selected');
+                $("#billState>option[value!='" + billState + "']").removeAttr('selected');
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+//            error: function (data) {
+//                console.log("AJAX ERROR:", data);
+//            }
+        });
+    });
 });
