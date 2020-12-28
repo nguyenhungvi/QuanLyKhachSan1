@@ -252,3 +252,37 @@ $(document).ready(function () {
         });
     });
 });
+//==============================================================================
+//ajax Detail_Bill
+$(document).ready(function () {
+    $("button[name='detailbillUpdate']").click(function () {
+        var id = $(this).attr('update-detailbill-id');
+        var data = {id: id};
+        console.log(id);
+        $.ajax({
+            url: '?mod=bill&controller=detail_bookroom&action=update_detailbill', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='detailbillId']").val(data.id);
+                $("input[name='detailbillNumberRoom']").val(data.number_room);
+                $("input[name='detailbillCheckIn']").val(data.check_in);
+                $("input[name='detailbillCheckOut']").val(data.check_out);
+                $("input[name='detailbill_Adults']").val(data.number_adults);
+                $("input[name='detailbill_Childrens']").val(data.number_childrens);
+                $("input[name='detailbillNumberRoom']").attr('max',data.number_room_empty);
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+//            error: function (data) {
+//                console.log("AJAX ERROR:", data);
+//            }
+        });
+    });
+});

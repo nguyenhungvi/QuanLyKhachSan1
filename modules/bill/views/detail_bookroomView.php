@@ -39,36 +39,34 @@ get_sidebar();
                                 <th class="col-md-1">STT</th>
                                 <th class="col-md-3">Loại phòng</th>
                                 <th class="col-md-2">Giá phòng</th>
-                                <th class="col-md-2">Số lượng phòng</th>
-                                <th class="col-md-2">Ngày đặt phòng</th>
-                                <th class="col-md-2">Chỉnh sửa</th>
+                                <th class="col-md-1">Số lượng</th>
+                                <th class="col-md-2">Ngày đặt</th>
+                                <th class="col-md-2">Tổng tiền</th>
+                                <th class="col-md-1">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             if (!empty($list_detail_bookroom)) {
                                 $t = 0;
-                                //global $room_id;
                                 foreach ($list_detail_bookroom as $detail_bookroom) {
                                     $t++;
                                     ?>
                                     <tr>
-                                <form method="POST">
-                                    <input type="hidden" name="idDetailBookRoom" value="<?php echo $detail_bookroom['id']; ?>" />
-                                    <td><?php echo $t; ?></td>
-                                    <td><?php echo $detail_bookroom['name']; ?></td>
-                                    <td><?php echo $detail_bookroom['price']; ?></td>
-                                    <td><input type="number" min="0" value="<?php echo $detail_bookroom['number_room']; ?>" name="numberDetailBookRoom" style="width: 60px;"></td>
-                                    <td><?php echo $detail_bookroom['date_set']; ?></td>
-                                    <td>
-                                        <input type="submit" name="btn-save-update-number-room" class="btn btn-add btn-sm" value="save"/>
-                                    </td>
-                                </form>
-                                </tr>
-                                <?php
+                                        <td><?php echo $t; ?></td>
+                                        <td><?php echo $detail_bookroom['name']; ?></td>
+                                        <td><?php echo $detail_bookroom['price']; ?></td>
+                                        <td><?php echo $detail_bookroom['number_room']; ?></td>
+                                        <td><?php echo $detail_bookroom['date_set']; ?></td>
+                                        <td><?php echo $detail_bookroom['total']; ?></td>
+                                        <td>
+                                            <button type="button" name="detailbillUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-detailbill-id="<?php echo $detail_bookroom['id']; ?>"><i class="fa fa-pencil"></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -80,7 +78,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật hóa đơn</h3>
+                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật chi tiết hóa đơn</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -90,35 +88,32 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <!--<input type="hidden" name="customerId" value=""/>-->
-                                            <label class="control-label">Tên khách hàng:</label>
-                                            <p type="text" name="billName" placeholder="" value="" class="form-control"></p>
+                                            <label class="control-label">Số phòng:</label>
+                                            <input type="number" name="detailbillNumberRoom" min="1" max="" placeholder="" value="" class="form-control"/>
                                         </div>
-                                        <div class="col-md-4 form-group date form_date">
-                                            <input type="hidden" name="billId" value=""/>
+                                        <div class="col-md-4 form-group date">
+                                            <input type="hidden" name="detailbillId" value=""/>
                                             <label class="control-label">Ngày nhận phòng:</label>
                                             <!--<input type="text" name="billReceived_date" placeholder="" value="" class="form-control">-->
-                                            <input type="datetime" id='received-date' name="receiveddate_BookRoom"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                            <input type="datetime" id='received-date' name="detailbillCheckIn"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
                                         </div>
-                                        <div class="col-md-4 form-group date form_date">
+                                        <div class="col-md-4 form-group date">
                                             <label class="control-label">Ngày trả phòng</label>
                                             <!--<input type="text" name="billPay_date" placeholder="" value="" class="form-control">-->
-                                            <input type="datetime" id='pay-date' name="paydate_BookRoom" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                            <input type="datetime" id='pay-date' name="detailbillCheckOut" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Tổng tiền:</label>
-                                            <p type="text" name="billTotal" placeholder="" value="" class="form-control"></p>
+                                            <label class="control-label">Số người lớn:</label>
+                                            <input type="number" name="detailbill_Adults" placeholder="" value="" class="form-control"/>
                                         </div>
                                         <!--Trạng thái-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Trạng thái:</label>
-                                            <select class="form-control" name="billState" id="billState">
-                                                <option value="0">Chưa thanh toán</option>
-                                                <option value="1">Đã thanh toán</option>
-                                            </select>
+                                            <label class="control-label">Số trẻ em:</label>
+                                            <input type="number" name="detailbill_Childrens" placeholder="" value="" class="form-control"/>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">
-                                                <input type="submit" name="save-update-bill-id" class="btn btn-add btn-sm" value="Save"/>
+                                                <input type="submit" name="save-update-detail-bill-id" class="btn btn-add btn-sm" value="Save"/>
                                             </div>
                                         </div>
                                     </fieldset>
