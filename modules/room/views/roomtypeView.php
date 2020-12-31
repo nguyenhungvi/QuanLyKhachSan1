@@ -20,9 +20,13 @@ get_sidebar();
             <div class="col-sm-12">
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="btn-group">
-                    <div class="buttonexport" id="buttonlist"> 
-                        <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
-                    </div>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                        ?>
+                        <div class="buttonexport" id="buttonlist"> 
+                            <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
+                        </div>
+                    <?php }
+                    ?>
                     <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
                     <ul class="dropdown-menu exp-drop" role="menu">
                         <li>
@@ -40,7 +44,11 @@ get_sidebar();
                                 <th class="col-md-4">Tên loại phòng</th>
                                 <th class="col-md-3">Hình ảnh</th>
                                 <th class="col-md-2">Giá($)</th>
-                                <th class="col-md-2">Chỉnh sửa</th>
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                                    ?>
+                                    <th class="col-md-2">Chỉnh sửa</th>
+                                <?php }
+                                ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,13 +63,19 @@ get_sidebar();
                                         <td><p><?php echo $t; ?></p></td>
                                         <td><?php echo $room_type['name']; ?></td>
                                         <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
-        <!--                                        <td><?php //echo currency_format($room_type['price']);   ?></td>-->
-                                        <td><input type="text" value="<?php echo number_format($room_type['price']); ?>" disabled="" class="text-center border-price-roomtype" id="roomtype_price"/></td>
-                                        <td>
-                                            <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
-                                            <a name="roomtypeDetail" href="?mod=room&controller=roomtype_detail&action=get_detail&id=<?php echo $room_type['id']; ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
-                                        </td>
+                                        <td><?php echo currency_format($room_type['price']); ?></td>
+                                <!--<td><input type="text" value="<?php echo number_format($room_type['price']); ?>" disabled="" class="text-center border-price-roomtype" id="roomtype_price"/></td>-->
+
+                                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                                            ?>
+                                            <td>
+                                                <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
+                                                <a name="roomtypeDetail" href="?mod=room&controller=roomtype_detail&action=get_detail&id=<?php echo $room_type['id']; ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
+                                            </td>
+                                        <?php }
+                                        ?>
+
                                     </tr>
                                     <?php
                                 }
@@ -89,17 +103,17 @@ get_sidebar();
                                         <div class="col-md-4 form-group">
                                             <!--<input type="hidden" name="roomId" value=""/>-->
                                             <label class="control-label">Tên loại phòng</label>
-                                            <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
+                                            <input type="text" name="roomtypeNameadd" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Giá loại phòng</label>
-                                            <input type="number" name="roomtypePrice" min="0" placeholder="" value="" class="form-control">
+                                            <input type="number" name="roomtypePriceadd" min="0" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
                                             <label class="control-label">Hình ảnh loại phòng:</label>
                                             <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
-                                            <input type="file" name="roomtypeImage" value="">
+                                            <input type="file" name="roomtypeImageadd" value="">
                                             <?php echo form_error('image'); ?>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">

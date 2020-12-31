@@ -1,3 +1,9 @@
+.logo-ks{
+    font-family: 'FontAwesome';
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+}
 .w-dialog{
     width: 960px;
 }
@@ -22,14 +28,22 @@ ul.pagging li{
 }
 
 ul.pagging li a{
+    /*    display: block;
+        padding: 8px 8px;
+        color: #333;
+        border: 1px solid #dedede;*/
     display: block;
     padding: 8px 8px;
     color: #333;
-    border: 1px solid #dedede;
+    border: 1px solid #ca0a0a;
+    background: #1abc9c;
 }
 ul.pagging li.active a{
+    /*    border: 1px solid #f00;
+        color: #f00;*/
     border: 1px solid #f00;
-    color: #f00;
+    color: #000;
+    background: #f1c40f;
 }
 
 /*.content-roomType{
@@ -159,4 +173,16 @@ ul.pagging li.active a{
     padding: 8px 25px;
     margin-top: 20px;
     border-radius: 3px;
+}
+
+#user_login{
+    padding: 22px;
+    color: #ecf0f1;
+    font-size: 21px;
+    font-family: arial;
+    font-weight: 900;
+}
+
+.pr-pagging{
+    width: 50%;
 }

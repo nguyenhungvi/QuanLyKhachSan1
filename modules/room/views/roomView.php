@@ -20,11 +20,13 @@ get_sidebar();
             <div class="col-sm-12">
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="btn-group">
-                    <div class="buttonexport" id="buttonlist"> 
-<!--                        <a class="btn btn-add" href="?mod=room&action=add"> <i class="fa fa-plus"></i> Thêm phòng
-                        </a> -->
-                        <button type="button" name="roomAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm phòng</button>
-                    </div>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                        ?>
+                        <div class="buttonexport" id="buttonlist"> 
+                            <button type="button" name="roomAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm phòng</button>
+                        </div>
+                    <?php }
+                    ?>
                     <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
                     <ul class="dropdown-menu exp-drop" role="menu">
                         <li>
@@ -58,15 +60,19 @@ get_sidebar();
                                         <td><?php echo $room['roomNumber']; ?></td>
                                         <td><?php echo $room['name']; ?></td>
                                         <td><?php
-                                                if ($room['state'] == 0) {
-                                                    echo "<span class='label-warning label label-default'>Còn trống</span>";
-                                                } elseif ($room['state'] == 1) {
-                                                    echo "<span class='label-custom label label-default'>Đã đặt</span>";
-                                                }
-                                                ?></td>
+                                            if ($room['state'] == 0) {
+                                                echo "<span class='label-warning label label-default'>Còn trống</span>";
+                                            } elseif ($room['state'] == 1) {
+                                                echo "<span class='label-custom label label-default'>Đã đặt</span>";
+                                            }
+                                            ?></td>
                                         <td>
                                             <button type="button" name="roomUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" room-id="<?php echo $room['id']; ?>"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" name="roomDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-id="<?php echo $room['id']; ?>"><i class="fa fa-trash-o"></i> </button>
+                                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                                                ?>
+                                                <button type="button" name="roomDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-id="<?php echo $room['id']; ?>"><i class="fa fa-trash-o"></i> </button>
+                                            <?php }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -103,7 +109,7 @@ get_sidebar();
                                                 <?php
                                                 foreach ($list_room_type as $room_type) {
                                                     ?>
-                                                    <option value="<?php echo $room_type['id'];?>"><?php echo $room_type['name'];?></option>
+                                                    <option value="<?php echo $room_type['id']; ?>"><?php echo $room_type['name']; ?></option>
                                                     <?php
                                                 }
                                                 ?>
@@ -161,7 +167,7 @@ get_sidebar();
                                                 <?php
                                                 foreach ($list_room_type as $room_type) {
                                                     ?>
-                                                    <option value="<?php echo $room_type['id'];?>"><?php echo $room_type['name'];?></option>
+                                                    <option value="<?php echo $room_type['id']; ?>"><?php echo $room_type['name']; ?></option>
                                                     <?php
                                                 }
                                                 ?>

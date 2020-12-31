@@ -71,8 +71,38 @@ $('#pay-date').datepicker({
 
 //THỐNG KÊ
 //window.onload = function () {
-//    var ad=$("input[name='thongke_DoanhThu']").attr('hihi');
-//    console.log(ad);
+//    var ad;
+//    var ad1;
+//    var b;
+//    $.ajax({
+//        url: '?mod=home&action=test', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+//        dataType: 'json', //dataType kiểu json
+//        success: function (data) {
+//            ad = data;
+//            console.log(JSON.stringify(ad, null, " "));
+//            var newstring = ad.replace(/"label"/g, 'x');
+//            console.log(newstring);
+//
+//        },
+//        error: function (data) {
+//            console.log("AJAX ERROR:", data);
+//        }
+//    });
+//
+//    $.ajax({
+//        url: '?mod=home&action=test1', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+//        dataType: 'json', //dataType kiểu json
+//        success: function (data) {
+//            ad1 = data;
+//            console.log(data);
+////            let string = ":insertx: :insertx: :inserty: :inserty: :insertz: :insertz:";
+//            var newstring = ad1.replace(/"x"/g, 'x');
+//            console.log(newstring);
+//        },
+//        error: function (data) {
+//            console.log("AJAX ERROR:", data);
+//        }
+//    });
 //    var chart = new CanvasJS.Chart("chartContainer", {
 //        animationEnabled: true,
 //        exportEnabled: true,
@@ -84,12 +114,27 @@ $('#pay-date').datepicker({
 //            includeZero: true
 //        },
 //        data: [{
-//            type: "column", //change type to bar, line, area, pie, etc
-//            //indexLabel: "{y}", //Shows y value on all Data Points
-//            indexLabelFontColor: "#5A5757",
-//            indexLabelPlacement: "outside",
-//            dataPoints: ad
-//        }]
+//                type: "column", //change type to bar, line, area, pie, etc
+//                //indexLabel: "{y}", //Shows y value on all Data Points
+//                indexLabelFontColor: "#5A5757",
+//                indexLabelPlacement: "outside",
+//                dataPoints: [
+//                    {x: 10, y: 71},
+//                    {x: 20, y: 55},
+//                    {x: 30, y: 50},
+//                    {x: 40, y: 65},
+//                    {x: 50, y: 92, indexLabel: "\u2605 Highest"},
+//                    {x: 60, y: 68},
+//                    {x: 70, y: 38},
+//                    {x: 80, y: 71},
+//                    {x: 90, y: 54},
+//                    {x: 100, y: 60},
+//                    {x: 110, y: 36},
+//                    {x: 120, y: 49},
+//                    {x: 130, y: 21, indexLabel: "\u2691 Lowest"}
+//                ]
+//
+//            }]
 //    });
 //    chart.render();
 //
@@ -109,8 +154,11 @@ $('#pay-date').datepicker({
 //                indexLabelFontSize: 16,
 //                indexLabel: "{label} - #percent%",
 //                yValueFormatString: "฿#,##0",
-//                dataPoints: "<?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>"
+//                dataPoints: JSON.stringify(ad, null)
 //            }]
 //    });
+//    //chart11.options.data[0].dataPoints.sort(compareDataPointX);
+//
 //    chart11.render();
+////    chart11.render();
 //}

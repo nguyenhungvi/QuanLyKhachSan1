@@ -1155,7 +1155,7 @@ a.sidebar-toggle .pe-7s-angle-left-circle {
   color: #fff;
 }
 .sidebar-menu .treeview-menu > li:hover > a {
-  color:red;  
+  color:#009688;  
 }
 .sidebar-menu .treeview-menu > li::before {
     left: 0;

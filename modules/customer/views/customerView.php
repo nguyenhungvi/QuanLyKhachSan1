@@ -199,47 +199,14 @@ get_sidebar();
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-        <!-- Modal -->    
-        <!-- delete Room -->
-        <!--        <div class="modal fade" id="customer2" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modal-header-primary">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h3><i class="fa fa-user m-r-5"></i> Xóa phòng</h3>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form class="form-horizontal" method="POST">
-                                            <fieldset>
-                                                <div class="col-md-12 form-group user-form-group">
-                                                    <label class="control-label">Bạn có chắc chắn muốn xóa phòng: <span id="roomNumber_del"></span></label>
-                                                    <div class="pull-right">
-                                                        <input type="hidden" name="roomId" value=""/>
-                                                        <input type="button" class="btn btn-danger btn-sm"  data-dismiss="modal" value="NO"/>
-                                                        <input type="submit" name="btn-delete-room" class="btn btn-add btn-sm" value="YES"/>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         /.modal-content 
-                    </div>
-                     /.modal-dialog 
-                </div>-->
-        <!-- /.modal -->
-        <!--Thiết kế phân trang-->
 
+        <!--Thiết kế phân trang-->
+        <?php
+        echo $get_pagging;
+        ?>
+        <div class="clearfix"></div>
     </section>
-    <?php
-    echo $get_pagging;
-    ?>
-    <div class="clearfix"></div>
+
     <!-- /.content -->
 </div>
 <?php

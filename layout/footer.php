@@ -44,7 +44,8 @@
       <script src="libraries/ckeditor/ckeditor.js" type="text/javascript"></script>
       <script src="public/js/app.js" type="text/javascript"></script>
       <script src="public/js/setting.js" type="text/javascript"></script>
-      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+      <script src="public/canvasjs/canvasjs.min.js" type="text/javascript"></script>
 <!--      <script>
          function dash() {
          // single bar chart

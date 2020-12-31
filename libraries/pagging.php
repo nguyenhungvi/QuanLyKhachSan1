@@ -1,7 +1,7 @@
 <?php
 
 function get_pagging($num_page, $page, $base_url = "") {
-    $str_pagging = "<ul class='pagging'>";
+    $str_pagging = "<div class='pr-pagging'><ul class='pagging'>";
     if ($page > 1) {
         $page_prev = $page - 1;
         $str_pagging .= "<li><a href=\"{$base_url}&page={$page_prev}\"><<</a></li>";
@@ -16,6 +16,6 @@ function get_pagging($num_page, $page, $base_url = "") {
         $page_next = $page + 1;
         $str_pagging .= "<li><a href=\"{$base_url}&page={$page_next}\">>></a></li>";
     }
-    $str_pagging .= "</ul>";
+    $str_pagging .= "</ul></div>";
     return $str_pagging;
 }

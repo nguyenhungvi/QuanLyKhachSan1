@@ -30,3 +30,18 @@ tạo bảng chart
 có chứa tháng và tổng tiền.
 
 SELECT DATE_FORMAT(pay_date,'%Y-%m')AS Month, SUM(total) FROM `bookroom` GROUP BY Month
+
+
+
+
+
+
+
+lỗi thêm loại phòng khi không có ảnh, cập nhật cũng bị
+
+
+<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+                ?>
+                <li><a href="?mod=customer&controller=customer&action=list_customer"><i class="fa fa-users"></i><span>Quản lý khách hàng</span></a></li>
+            <?php }
+            ?>
