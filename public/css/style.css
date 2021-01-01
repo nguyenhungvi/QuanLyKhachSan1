@@ -184,5 +184,6 @@ ul.pagging li.active a{
 }
 
 .pr-pagging{
-    width: 50%;
+    width: 100%;
+    text-align: center;
 }

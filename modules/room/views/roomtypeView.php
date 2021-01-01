@@ -71,7 +71,7 @@ get_sidebar();
                                             <td>
                                                 <button type="button" name="roomtypeUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-room-type-id="<?php echo $room_type['id']; ?>" title="Cập nhật loại phòng"><i class="fa fa-pencil"></i></button>
                                                 <button type="button" name="roomtypeDelete" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#customer2" del-room-type-id="<?php echo $room_type['id']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </button>
-                                                <a name="roomtypeDetail" href="?mod=room&controller=roomtype_detail&action=get_detail&id=<?php echo $room_type['id']; ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
+                                                <a name="roomtypeDetail" href="?mod=room&controller=roomtype_detail&action=get_detail&id=<?php echo $room_type['id']; ?>&get_page=<?php echo $page; ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $room_type['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
                                             </td>
                                         <?php }
                                         ?>

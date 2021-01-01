@@ -45,3 +45,28 @@ lỗi thêm loại phòng khi không có ảnh, cập nhật cũng bị
                 <li><a href="?mod=customer&controller=customer&action=list_customer"><i class="fa fa-users"></i><span>Quản lý khách hàng</span></a></li>
             <?php }
             ?>
+
+
+Xử lý trong router và base khi đường dẫn sai
+
+làm phụ thu các dịch vụ mà khách hàng sử dụng thêm
+
+Quản lý phụ thu.
+---quản lý sản phẩm
+---hóa đơn sản phẩm: nếu hóa đơn phong chưa thanh toán hiện cái nút phụ thu()
+
+
+detailbook_room(id,booking_code, room_type_id, room_id)
+
+
+detialbool_phuthu(id, booking_code, id_sanpham, sô lượng, giá tiền, tongtien)
+
+surcharge
+
+product(id, tensp, giasp, soluong)
+
+
+
+SELECT detailbook_surcharge.id, detailbook_surcharge.booking_code, `id_product`, detailbook_surcharge.number, product.price, `sum_money` FROM `detailbook_surcharge`,`bookroom`,`product` WHERE detailbook_surcharge.booking_code=bookroom.id AND detailbook_surcharge.id_product=product.id AND detailbook_surcharge.id=1
+
+update lai bookroom nhớ pải cộng thêm ở cái detai_surcharge

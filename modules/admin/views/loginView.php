@@ -53,9 +53,8 @@
                                     <?php echo form_error('password'); ?>
                                     <?php echo form_error('account'); ?>
                                 </div>
-                                <div>
+                                <div style="width: 100%; text-align: center;">
                                     <input type="submit" class="btn btn-add" name="btn-login" value="Đăng nhập"/>
-                                    <a class="btn btn-warning" href="register.html">Register</a>
                                 </div>
                             </form>
                         </div>

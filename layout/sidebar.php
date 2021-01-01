@@ -28,7 +28,7 @@
             <li><a href="?mod=customer&controller=customer&action=list_customer"><i class="fa fa-users"></i><span>Quản lý khách hàng</span></a></li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-home"></i><span>Quản lý đặt phòng</span>
+                    <i class="hvr-buzz-out fa fa-hotel"></i><span>Quản lý đặt phòng</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -38,7 +38,13 @@
                     <li><a href="?mod=bill">Hóa đơn</a></li>
                 </ul>
             </li>
-
+            <!--Product-->
+            <li class="active">
+                <a href="?mod=product"><i class="fa fa-tachometer"></i><span>Quản lý phụ thu</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar -->

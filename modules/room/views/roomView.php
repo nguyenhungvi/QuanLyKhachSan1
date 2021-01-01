@@ -61,7 +61,7 @@ get_sidebar();
                                         <td><?php echo $room['name']; ?></td>
                                         <td><?php
                                             if ($room['state'] == 0) {
-                                                echo "<span class='label-warning label label-default'>Còn trống</span>";
+                                                echo "<span class='label-danger label label-default'>Còn trống</span>";
                                             } elseif ($room['state'] == 1) {
                                                 echo "<span class='label-custom label label-default'>Đã đặt</span>";
                                             }

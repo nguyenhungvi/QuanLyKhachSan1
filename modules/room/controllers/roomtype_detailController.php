@@ -8,10 +8,12 @@ function construct() {
 
 function get_detailAction() {
     $id = $_GET['id'];
+    $page = isset($_GET['get_page']) ? (int) ($_GET['get_page']) : 1;
     $roomtypedetail = get_roomtypedetail_id($id);
     $roomtypedetail_img = get_roomtypedetail_img_id($id);
     $data['roomtypedetail'] = $roomtypedetail;
     $data['roomtypedetail_img'] = $roomtypedetail_img;
+    $data['page']=$page;
     $num_row_room_code=get_num_row("`room_type_detail`","WHERE room_type_id = {$id}");
     //$data['num_row_room_code']=$num_row_room_code;
     if (isset($_POST['save-update-room-type-id'])) {
@@ -42,7 +44,7 @@ function get_detailAction() {
                 insert_info_room_type_detail_image($data);
             }
         }
-        redirect("?mod=room&controller=roomtype_detail&action=get_detail&id={$id}");
+        redirect("?mod=room&controller=roomtype_detail&action=get_detail&id={$id}&get_page={$_GET['get_page']}");
     }
     if(isset($_POST['btn-delete-room-type-detail-img'])){
         delete_detailAction();
@@ -55,6 +57,6 @@ function delete_detailAction(){
         $id=$_POST['roomtypedetail_img_Id'];
         $id_room_code=$_GET['id'];
         delete_room_type_detail_id($id);
-        redirect("?mod=room&controller=roomtype_detail&action=get_detail&id={$id_room_code}");
+        redirect("?mod=room&controller=roomtype_detail&action=get_detail&id={$id_room_code}&get_page={$_GET['get_page']}");
     }
 }

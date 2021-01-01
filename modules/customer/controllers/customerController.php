@@ -16,7 +16,7 @@ function list_customerAction() {
     //Đêm số dòng trên bảng database
     $num_rows = get_num_row("`customer`");
     //Số lượng bảng ghi trên bảng
-    $num_per_page = 3;
+    $num_per_page = 6;
     //Tổng số bảng ghi
     $total_row = $num_rows;
     //Tổng số trang

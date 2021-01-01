@@ -48,7 +48,6 @@
         <!--style tự thêm-->
         <link href="public/css/reset.css" rel="stylesheet" type="text/css"/>
         <link href="public/css/style.css" rel="stylesheet" type="text/css"/>
-
     <a href="libraties/ckeditor/config.js"></a>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -82,17 +81,17 @@
                         <li class="dropdown dropdown-help hidden-xs">
                             <a id="user_login" class="dropdown-toggle" data-toggle="dropdown">
                                 <?php echo $_SESSION['user_login']; ?></a>
-<!--                            <ul class="dropdown-menu" >
-                                <li>
-                                    <a href="profile.html">
-                                        <i class="fa fa-line-chart"></i> Networking</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa fa-bullhorn"></i> Lan settings</a></li>
-                                <li><a href="#"><i class="fa fa-bar-chart"></i> Settings</a></li>
-                                <li><a href="login.html">
-                                        <i class="fa fa-wifi"></i> wifi</a>
-                                </li>
-                            </ul>-->
+                            <!--                            <ul class="dropdown-menu" >
+                                                            <li>
+                                                                <a href="profile.html">
+                                                                    <i class="fa fa-line-chart"></i> Networking</a>
+                                                            </li>
+                                                            <li><a href="#"><i class="fa fa fa-bullhorn"></i> Lan settings</a></li>
+                                                            <li><a href="#"><i class="fa fa-bar-chart"></i> Settings</a></li>
+                                                            <li><a href="login.html">
+                                                                    <i class="fa fa-wifi"></i> wifi</a>
+                                                            </li>
+                                                        </ul>-->
                         </li>
                         <!-- user -->
                         <li class="dropdown dropdown-user">

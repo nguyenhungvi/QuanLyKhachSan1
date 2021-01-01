@@ -19,7 +19,7 @@ get_sidebar();
             <div class="col-sm-12">
                 <div class="btn-group">
                     <div class="buttonexport" id="buttonlist"> 
-                        <a href="?mod=room&controller=roomtype&action=list_room_type" name="roomtypedetail_update" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Danh sách loại phòng</a>
+                        <a href="?mod=room&controller=roomtype&action=list_room_type&page=<?php echo $page; ?>" name="roomtypedetail_update" class="btn btn-add btn-sm" data-toggle="modal" room-id=""><i class="fa fa-pencil-square-o"></i> Danh sách loại phòng</a>
                     </div>
                 </div>
                 <div class="row">

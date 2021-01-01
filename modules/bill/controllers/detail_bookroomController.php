@@ -9,6 +9,9 @@ function indexAction() {
     if (isset($_GET['id'])) {
         $list_detail_bookroom = get_list_detail_bookroom_booking_code($_GET['id']);
         $data['list_detail_bookroom'] = $list_detail_bookroom;
+        
+        $list_detail_surcharge=get_list_detail_surcharge($_GET['id']);
+        $data['list_detail_surcharge'] = $list_detail_surcharge;
     }
     if (isset($_POST['save-update-detail-bill-id'])) {
         update_detailbillAction();
@@ -30,7 +33,7 @@ function update_detailbillAction() {
             echo "alert('Ngày trả phòng không hợp lệ, vui lòng chọn lại')";
             echo "</script>";
         } else {
-//            bắt đầu update
+//            bắt đầu update lại detailbook_
             $id_detail = $_POST['detailbillId'];
             $data_detail_bill = array(
                 'number_room' => $_POST['detailbillNumberRoom'],
@@ -40,10 +43,16 @@ function update_detailbillAction() {
                 'number_childrens' => $_POST['detailbill_Childrens']
             );
             update_info_detail_bookroom($data_detail_bill, $id_detail);
-            $total_money = get_total_money_detail_book($_GET['id']);
+            //update lại bill
+//            lấy lại tổng tiền sua khi update lại detailbook
+            $total_money_detailbook = get_total_money_detail_book($_GET['id']);
+//            lấy tổng tiền trong phụ thu
+            $total_money_surcharge=get_total_money_surcharge($_GET['id']);
+            //Tổng tiền của bill sau khi lấy tiền của hai cái kia
+            $total_money_bookroom=$total_money_detailbook['total_money']+$total_money_surcharge['total_money_surcharge'];
             //show_array($total_money);
             $data_bill = array(
-                'total' => $total_money['total_money']
+                'total' => $total_money_bookroom
             );
             update_info_bill($data_bill, $_GET['id']);
             if (isset($_GET['page'])) {

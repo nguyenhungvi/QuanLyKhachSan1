@@ -70,6 +70,47 @@ get_sidebar();
                         </tbody>
                     </table>
                 </div>
+
+                <!--Bảng phụ thu-->
+                <?php
+                if (!empty($list_detail_surcharge)) {
+                    ?>
+                    <div class = "table-responsive">
+                        <table id = "dataTableExample1" class = "table table-bordered table-striped table-hover text-center">
+                            <thead>
+                                <tr class = "info">
+                                    <th class = "col-md-1">STT</th>
+                                    <th class = "col-md-3">Tên sản phẩm</th>
+                                    <th class = "col-md-2">Số lượng</th>
+                                    <th class = "col-md-3">Giá</th>
+                                    <th class = "col-md-3">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (!empty($list_detail_surcharge)) {
+                                    $t = 0;
+                                    foreach ($list_detail_surcharge as $detail_surcharge) {
+                                        $t++;
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $t; ?></td>
+                                            <td><?php echo $detail_surcharge['name_product']; ?></td>
+                                            <td><?php echo $detail_surcharge['number']; ?></td>
+                                            <td><?php echo $detail_surcharge['price']; ?></td>
+                                            <td><?php echo $detail_surcharge['sum_money']; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php
+                }
+                ?>
+
             </div>
         </div>
         <!-- update Room -->

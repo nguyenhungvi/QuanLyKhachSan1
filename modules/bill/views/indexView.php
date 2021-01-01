@@ -60,6 +60,13 @@ get_sidebar();
                                                 echo "&page={$_GET['page']}";
                                             }
                                             ?>" class="btn btn-warning btn-sm" data-toggle="modal" del-room-type-id="<?php echo $bookroom['id']; ?>" title="Chi tiết loại phòng"><i class="fa fa-asterisk"></i> </a>
+                                               <?php
+                                               if ($bookroom['state'] == 0) {
+                                                   ?>
+                                                <button type="button" name="surchargeAdd" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#customer3" title="Thêm phụ thu" add-surcharge_bill-id="<?php echo $bookroom['id']; ?>"><i class="fa fa-plus"></i></button>
+                                                <?php
+                                            }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -70,6 +77,57 @@ get_sidebar();
                     </table>
                 </div>
             </div>
+        </div>
+        <!-- add Phụ thu -->
+        <div class="modal fade" id="customer3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog w-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-primary">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3><i class="fa fa-user m-r-5"></i> Thêm phụ thu</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal" method="POST">
+                                    <fieldset>
+                                        <!-- Tên sản phẩm-->
+                                        <div class="col-md-4 form-group">
+                                            <input type="hidden" name="surcharge_Booking_code" value=""/>
+                                            <label class="control-label">Tên sản phẩm:</label>
+                                            <!--<input type="text" name="product_Name" placeholder="" value="" class="form-control">-->
+                                            <select class="form-control" name="surcharge_Name" id="product_Name">
+                                                <?php
+                                                foreach ($get_list_product as $product) {
+                                                    ?>
+                                                    <option value="<?php echo $product['id']; ?>"><?php echo $product['name_product']; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <!--Số lượng-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label">Số lượng:</label>
+                                            <input type="number" min="1" name="surcharge_Number" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <div class="col-md-12 form-group user-form-group">
+                                            <div class="pull-right">
+                                                <input type="submit" name="save-add-product" class="btn btn-add btn-sm" value="Save"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
         <!-- update Room -->
         <div class="modal fade" id="customer1" tabindex="-1" role="dialog" aria-hidden="true">

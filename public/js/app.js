@@ -286,3 +286,35 @@ $(document).ready(function () {
         });
     });
 });
+//======================================================================================
+// Sản phẩm
+//ajax update room
+$(document).ready(function () {
+    $("button[name='productUpdate']").click(function () {
+        var id = $(this).attr('product-id');
+        var data = {id: id};
+        //console.log(id);
+        $.ajax({
+            url: '?mod=product&action=update_product', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+//            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='productId']").val(data.id);
+                $("input[name='productName']").val(data.name_product);
+                $("input[name='productPrice']").val(data.price);
+                $("input[name='productNumber']").val(data.number);
+//                console.log(roomState);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+
+
+});
+//===============================================================================

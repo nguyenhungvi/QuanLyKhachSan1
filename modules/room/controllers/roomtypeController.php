@@ -4,6 +4,9 @@ function construct() {
 //    echo "Dùng chung, load đầu tiên";
     load_model('roomtype');
     load('lib', 'validation');
+//    if (!function_exists($_GET['action'])) {
+//        echo "Không tìm thấy trang bạn tìm. Vui lòng click <a href='?'>Vào đây</a> để quay lại trang chủ";
+//    }
 }
 
 function indexAction() {
@@ -16,7 +19,7 @@ function list_room_typeAction() {
     //Đêm số dòng trên bảng database
     $num_rows = get_num_row("`roomtype`");
     //Số lượng bảng ghi trên bảng
-    $num_per_page = 3;
+    $num_per_page = 6;
     //Tổng số bảng ghi
     $total_row = $num_rows;
     //Tổng số trang
@@ -32,6 +35,7 @@ function list_room_typeAction() {
     $data['list_rooms_type'] = $list_rooms_type;
     $data['start'] = $start;
     $data['get_pagging'] = $get_pagging;
+    $data['page'] = $page;
 
     //update_room khi tồn tại nut lưu
     if (isset($_POST['save-update-room-type-id'])) {
@@ -53,7 +57,7 @@ function update_room_typeAction() {
     if (isset($_POST['save-update-room-type-id'])) {
         $room_id = $_POST['roomtypeId'];
         global $error;
-        if (isset($_FILES['roomtypeImage'])&& $_FILES['roomtypeImage']['error']==0) {
+        if (isset($_FILES['roomtypeImage']) && $_FILES['roomtypeImage']['error'] == 0) {
             $imagetype = $_FILES['roomtypeImage']['type'];
             if ($imagetype != "image/png" && $imagetype != "image/jpg" && $imagetype != "image/jpeg" && $imagetype != "image/git") {
                 $error['image'] = "Không đúng định dạng";
@@ -71,7 +75,7 @@ function update_room_typeAction() {
                     redirect("?mod=room&controller=roomtype&action=list_room_type");
                 }
             }
-        } else{
+        } else {
             $data = array(
                 'name' => $_POST['roomtypeName'],
                 'price' => $_POST['roomtypePrice']
@@ -107,7 +111,7 @@ function add_room_typeAction() {
     if (isset($_POST['save-add-room-type-id'])) {
         //$room_id = $_POST['roomtypeId'];
         global $error;
-        if (isset($_FILES['roomtypeImageadd']['name']) && $_FILES['roomtypeImageadd']['error']==0) {
+        if (isset($_FILES['roomtypeImageadd']['name']) && $_FILES['roomtypeImageadd']['error'] == 0) {
 //            show_array($_FILES['roomtypeImageadd']);
             $imagetype = $_FILES['roomtypeImageadd']['type'];
             if ($imagetype != "image/png" && $imagetype != "image/jpg" && $imagetype != "image/jpeg" && $imagetype != "image/git") {
@@ -127,7 +131,7 @@ function add_room_typeAction() {
                     redirect("?mod=room&controller=roomtype&action=list_room_type");
                 }
             }
-        } else{
+        } else {
             $data = array(
                 'name' => $_POST['roomtypeNameadd'],
                 'price' => $_POST['roomtypePriceadd']

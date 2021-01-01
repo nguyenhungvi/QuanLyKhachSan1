@@ -7,6 +7,12 @@ function get_list_detail_bookroom_booking_code($booking_code){
     return $result;
 }
 
+//Lấy danh sách phụ thu theo hóa đơn
+function get_list_detail_surcharge($booking_code){
+    $result=db_fetch_array("SELECT product.name_product, detail_surcharge.number, detail_surcharge.price, `sum_money` FROM `detail_surcharge`,`product` WHERE detail_surcharge.booking_code={$booking_code} and detail_surcharge.id_product=product.id");
+    return $result;
+}
+
 //update laijdetail book
 function update_info_detail_bookroom($data,$id){
     db_update('detailbook', $data,"`id`={$id}");
@@ -16,6 +22,12 @@ function update_info_detail_bookroom($data,$id){
 //lấy tổng tiền của tất cả chi tiết hóa đơn theo từng hóa đơn
 function get_total_money_detail_book($id){
     $result= db_fetch_row("SELECT SUM(A.total) as total_money FROM (SELECT ((detailbook.price*`number_room`)*(DATEDIFF(check_out, check_in)+1)) as total FROM `detailbook` WHERE booking_code={$id} GROUP BY room_type_id) AS A");
+    return $result;
+}
+
+//Lấy tổng tiền của tất cả phụ thu theo hóa đơn
+function get_total_money_surcharge($id){
+    $result= db_fetch_row("SELECT SUM(sum_money) AS total_money_surcharge FROM `detail_surcharge` WHERE detail_surcharge.booking_code={$id} GROUP BY booking_code");
     return $result;
 }
 
