@@ -75,3 +75,4 @@ NHập ngày nhận phòng, sau đó nhập ngày trả phòng,
 => kiểm tra xem ngày đó còn bao nhiu phòng trống,
 detailbook(2/1 đến ngày 4/1 đặt 2 phòng
 	   3/4 đến ngày 5/1 đặt 3 phòng)
+khi đã thanh toán thì cái phòng đó sẽ thay đổi trạng thái

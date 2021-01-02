@@ -28,6 +28,7 @@ get_sidebar();
                 </span>
             </a>
         </div>
+        <?php //show_array($check_in_date); ?>
         <!--END CART-->
 
     </section>
@@ -45,6 +46,28 @@ get_sidebar();
                     <div class="panel-body">
                         <form method="POST">
                             <div class="form-group">
+                                <!--Ngày đặt-->
+                                <div class="form-group">
+                                    <div class="field-wl">
+                                        <label class="lbl-book">Ngày nhận phòng</label>
+                                        <div class=" input-group date form_date">
+                                            <input type="text" id='received-date' name="checkin_BookRoom"  class="form-control years" value="<?php if(isset($_POST['btn-search-roomtype'])){echo $_POST['checkin_BookRoom'];}else{echo date("Y-m-d");} ?>" /><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--ngày trả-->
+                                <div class="form-group">
+                                    <div class="field-wr">
+                                        <label class="lbl-book">Ngày trả phòng</label>
+                                        <div class=" input-group date form_date">
+                                            <input type="text" id='pay-date' name="checkout_BookRoom" class="form-control years" value="<?php if(isset($_POST['btn-search-roomtype'])){echo $_POST['checkout_BookRoom'];}else{echo date("Y-m-d");} ?>"/><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Tìm kiếm-->
+                                <div class="form-group text-center">
+                                    <input type="submit" name="btn-search-roomtype" class="btn btn-add" value="Tìm kiếm"/>
+                                </div>
                                 <label class="lbl-book">Loại phòng</label>
                                 <!--<input type="text" class="form-control" placeholder="Nhập loại phòng" required>-->
                                 <select class="form-control" name="roomType" id="roomType_select">
@@ -62,24 +85,7 @@ get_sidebar();
                                 <label class="lbl-book">Số lượng</label>
                                 <input type="number" name="count_room" min="1" max="" value="1" class="form-control">
                             </div>
-                            <!--Ngày đặt-->
-                            <div class="form-group">
-                                <div class="field-wl">
-                                    <label class="lbl-book">Ngày nhận phòng</label>
-                                    <div class=" input-group date form_date">
-                                        <input type="text" id='received-date' name="checkin_BookRoom"  class="form-control years" value="<?php echo date("Y-m-d")?>" /><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--ngày trả-->
-                            <div class="form-group">
-                                <div class="field-wr">
-                                    <label class="lbl-book">Ngày trả phòng</label>
-                                    <div class=" input-group date form_date">
-                                        <input type="text" id='pay-date' name="checkout_BookRoom" class="form-control years" value="<?php echo date("Y-m-d")?>"/><span class="input-group-addon"><a><i class="fa fa-calendar"></i></a></span>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!--Người lớn-->
                             <div class="form-group">
                                 <div class="field-wl">
@@ -123,13 +129,24 @@ get_sidebar();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($check_in_now as $room_type) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $room_type['name']; ?></td>
-                                            <td><?php echo $room_type['number']; ?></td>
-                                        </tr>
-                                        <?php
+                                    if (!isset($_POST['btn-search-roomtype'])) {
+                                        foreach ($check_in_now as $room_type) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $room_type['name']; ?></td>
+                                                <td><?php echo $room_type['number']; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    } else {
+                                        foreach ($number_room_empty as $room_type) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $room_type['name']; ?></td>
+                                                <td><?php echo $room_type['number']; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
                                     }
                                     ?>
                                 </tbody>
