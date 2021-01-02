@@ -123,11 +123,11 @@ get_sidebar();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($get_list_room_type as $room_type) {
+                                    foreach ($check_in_now as $room_type) {
                                         ?>
                                         <tr>
                                             <td><?php echo $room_type['name']; ?></td>
-                                            <td><?php echo $room_type['count_room']; ?></td>
+                                            <td><?php echo $room_type['number']; ?></td>
                                         </tr>
                                         <?php
                                     }

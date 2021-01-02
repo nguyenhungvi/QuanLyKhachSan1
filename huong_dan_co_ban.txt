@@ -70,3 +70,8 @@ product(id, tensp, giasp, soluong)
 SELECT detailbook_surcharge.id, detailbook_surcharge.booking_code, `id_product`, detailbook_surcharge.number, product.price, `sum_money` FROM `detailbook_surcharge`,`bookroom`,`product` WHERE detailbook_surcharge.booking_code=bookroom.id AND detailbook_surcharge.id_product=product.id AND detailbook_surcharge.id=1
 
 update lai bookroom nhớ pải cộng thêm ở cái detai_surcharge
+
+NHập ngày nhận phòng, sau đó nhập ngày trả phòng,
+=> kiểm tra xem ngày đó còn bao nhiu phòng trống,
+detailbook(2/1 đến ngày 4/1 đặt 2 phòng
+	   3/4 đến ngày 5/1 đặt 3 phòng)

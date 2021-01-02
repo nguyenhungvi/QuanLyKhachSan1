@@ -15,17 +15,14 @@ function indexAction() {
         $get_number_room_cart = get_number_room_cart();
     }
     $data['get_number_room_cart'] = $get_number_room_cart;
-
-
-    //Xử lý ajax them dữ liệu vào cart
-//    if (isset($_POST['id'], $_POST['count_room'])) {
-//        $data_add_cart = array(
-//            'id_roomtype' => $_POST['id'],
-//            'number_room' => $_POST['count_room']
-//        );
-//        add_cart($data_add_cart);
-//        redirect();
-//    }
+    //===========================================
+    //TEST TẠI ĐÂY
+//    Kiểm tra ngày nhận hôm nay có bao nhiu phòng trống cho từng loại phòng
+    $check_in_now=check_date_now(date("Y-m-d"));
+    $data['check_in_now'] = $check_in_now;
+    //============================================
+    
+    //Kiểm tra sự tồn tại nút thêm vào giỏ hàng
     if (isset($_POST['btn-add-roomtype-cart'])) {
         // kiểm tra ngày trả phòng > hơn ngày nhận phòng
         $first_date = strtotime($_POST['checkin_BookRoom']);

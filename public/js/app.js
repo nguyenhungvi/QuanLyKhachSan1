@@ -273,7 +273,7 @@ $(document).ready(function () {
                 $("input[name='detailbillCheckOut']").val(data.check_out);
                 $("input[name='detailbill_Adults']").val(data.number_adults);
                 $("input[name='detailbill_Childrens']").val(data.number_childrens);
-                $("input[name='detailbillNumberRoom']").attr('max',data.number_room_empty);
+                $("input[name='detailbillNumberRoom']").attr('max', data.number_room_empty);
                 console.log(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -318,3 +318,35 @@ $(document).ready(function () {
 
 });
 //===============================================================================
+// Số phòng trống theo ngày tìm kiếm trong đặt phòng
+//ajax tìm kiếm phòng trống
+$(document).ready(function () {
+    $("input[name='checkout_BookRoom']").change(function () {
+        var check_in = $('#received-date').val();
+        var check_out = $('#pay-date').val();
+        console.log(check_in, '=======', check_out);
+        var data = {check_in: check_in, check_out:check_out};
+        console.log(data);
+        $.ajax({
+            url: '?mod=product&action=update_product', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+//            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                $("input[name='productId']").val(data.id);
+                $("input[name='productName']").val(data.name_product);
+                $("input[name='productPrice']").val(data.price);
+                $("input[name='productNumber']").val(data.number);
+//                console.log(roomState);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+
+
+});
