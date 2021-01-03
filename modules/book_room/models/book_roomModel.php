@@ -31,8 +31,9 @@ function add_book_room($data) {
 }
 
 //Thêm detail book room
-function add_detail_book_room($data) {
-    db_insert('detailbook', $data);
+function add_detail_book($data) {
+    $result=db_insert('detailbook', $data);
+    return $result;
 }
 
 //Xóa tất cả đặt phòng trong giỏ hàng
@@ -40,4 +41,58 @@ function detete_all_cart($table) {
     db_delete_all($table);
 }
 
+//Lấy danh sách phòng còn trống theo loại phòng ngày mà mình muốn đặt
+//function get_list_room_empty($check_in,$check_out,$id_room_type){
+//    $result = db_fetch_array("SELECT list_room_detail_book.id_room
+//FROM (SELECT roomtype.id,room.id as id_room
+//	FROM `roomtype`,`room`
+//	WHERE roomtype.id=room.typeCode and roomtype.id={$id_room_type}) AS list_room_detail_book,
+//    (SELECT detailbook_room.room_id, detailbook.room_type_id
+//	FROM `detailbook_room`,`detailbook`
+//	WHERE detailbook_room.detail_book_id=detailbook.id AND detailbook.room_type_id={$id_room_type} AND ((detailbook.check_in<='{$check_in}') AND ('{$check_in}' <= detailbook.check_out)) OR ((detailbook.check_in<='{$check_out}') AND ('{$check_out}' <= detailbook.check_out))) AS list_room_room_type
+//WHERE list_room_detail_book.id_room != list_room_room_type.id");
+//    return $result;
+//}
+
+//Lấy danh sách phòng đã được đặt trong detailbook theo ngày nhận và ngày trả và theo loại phòng
+function get_list_room_detail_book($check_in,$check_out, $id_roomtype){
+    $result= db_fetch_array("SELECT detailbook_room.room_id
+	FROM `detailbook_room`,`detailbook`
+	WHERE detailbook_room.detail_book_id=detailbook.id AND detailbook.room_type_id={$id_roomtype} AND ((detailbook.check_in<='{$check_in}') AND ('{$check_in}' <= detailbook.check_out))
+        OR ((detailbook.check_in<='{$check_out}') AND ('{$check_out}' <= detailbook.check_out))");
+    return $result;
+}
+
+//Lấy toàn bộ phòng theo từng loại phòng chỉ định sẵn
+function get_list_room_of_room_type($id){
+    $result= db_fetch_array("SELECT room.id as id_room
+	FROM `roomtype`,`room`
+	WHERE roomtype.id=room.typeCode and roomtype.id={$id}");
+    return $result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Thêm detail_book_room
+function add_detailbool_room($data){
+    $result = db_insert('detailbook_room', $data);
+    return $result;
+}
 ?>

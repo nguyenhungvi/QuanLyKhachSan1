@@ -20,7 +20,7 @@ function indexAction() {
 //    Kiểm tra ngày nhận hôm nay có bao nhiu phòng trống cho từng loại phòng
     $check_in_now = check_date_now(date("Y-m-d"));
     $data['check_in_now'] = $check_in_now;
-    //Ấn nút tìm kiếm tìm xem vào khaonr thời gian đó còn bao nhiu phòng trống
+    //Ấn nút tìm kiếm tìm xem vào khoảng thời gian đó còn bao nhiu phòng trống
     if (isset($_POST['btn-search-roomtype'])) {
         $check_in_date = check_date_now($_POST['checkin_BookRoom']);
         $check_out_date = check_date_now($_POST['checkout_BookRoom']);

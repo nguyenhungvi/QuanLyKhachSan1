@@ -71,3 +71,5 @@ FROM (SELECT id,room_type_id,number_room
             GROUP BY typeCode) AS Roomtype ON Detailbook.room_type_id=Roomtype.id");
     return $result;
 }
+
+//Lấy số phòng trống mà ngày mình nhập
