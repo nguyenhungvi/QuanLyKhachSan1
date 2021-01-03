@@ -63,9 +63,10 @@ function update_info_cart_id($data, $id) {
 function check_date_now($datenow) {
     //Lấy 1 mảng trong database
     $result = db_fetch_array("SELECT Roomtype.id,Roomtype.name,(IFNULL(Roomtype.number_room-Detailbook.number_room,Roomtype.number_room)) AS number
-FROM (SELECT id,room_type_id,number_room
+FROM (SELECT room_type_id,SUM(number_room) AS number_room
 	FROM `detailbook`
-	WHERE detailbook.check_in <='{$datenow}' AND '{$datenow}' <= detailbook.check_out) AS Detailbook RIGHT JOIN (SELECT roomtype.id,roomtype.name,COUNT(room.id) as number_room
+	WHERE detailbook.check_in <='{$datenow}' AND '{$datenow}' <= detailbook.check_out
+    GROUP BY room_type_id) AS Detailbook RIGHT JOIN (SELECT roomtype.id,roomtype.name,COUNT(room.id) as number_room
             FROM `room`,`roomtype`
             WHERE room.typeCode=roomtype.id
             GROUP BY typeCode) AS Roomtype ON Detailbook.room_type_id=Roomtype.id");
