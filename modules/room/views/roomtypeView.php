@@ -23,17 +23,10 @@ get_sidebar();
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         ?>
                         <div class="buttonexport" id="buttonlist"> 
-                            <button type="button" name="roomtype_add" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
+                            <button type="button" name="roomtype_add" class="btn btn-add btn-sm m-b-10" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i> Thêm phòng</button>
                         </div>
                     <?php }
                     ?>
-                    <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
-                    <ul class="dropdown-menu exp-drop" role="menu">
-                        <li>
-                            <a href="#" onclick="$('#dataTableExample1').tableExport({type: 'pdf', pdfFontSize: '7', escape: 'false'});"> 
-                                <img src="public/dist/img/pdf.png" width="24" alt="logo"> PDF</a>
-                        </li>
-                    </ul>
                 </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="table-responsive">
@@ -92,7 +85,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Thêm loại phòng</h3>
+                        <h3><i class="fa fa-home m-r-5"></i> Thêm loại phòng</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -102,16 +95,16 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <!--<input type="hidden" name="roomId" value=""/>-->
-                                            <label class="control-label">Tên loại phòng</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên loại phòng:</label>
                                             <input type="text" name="roomtypeNameadd" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Giá loại phòng</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá loại phòng:</label>
                                             <input type="number" name="roomtypePriceadd" min="0" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Hình ảnh loại phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px; margin-top: 5px;">Hình ảnh loại phòng:</label>
                                             <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
                                             <input type="file" name="roomtypeImageadd" value="">
                                             <?php echo form_error('image'); ?>
@@ -141,7 +134,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật loại phòng</h3>
+                        <h3><i class="fa fa-home m-r-5"></i> Cập nhật loại phòng</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -151,16 +144,16 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <input type="hidden" name="roomtypeId" value=""/>
-                                            <label class="control-label">Tên loại phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên loại phòng:</label>
                                             <input type="text" name="roomtypeName" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Giá loại phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá loại phòng:</label>
                                             <input type="number" min="0" name="roomtypePrice" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Hình ảnh loại phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px; margin-top: 5px;">Hình ảnh loại phòng:</label>
                                             <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
                                             <input type="file" name="roomtypeImage" value="">
                                             <?php echo form_error('image'); ?>
@@ -191,7 +184,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Xóa phòng</h3>
+                        <h3><i class="fa fa-home m-r-5"></i> Xóa phòng</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">

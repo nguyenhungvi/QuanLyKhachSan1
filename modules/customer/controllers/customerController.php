@@ -7,7 +7,7 @@ function construct() {
 }
 
 function indexAction() {
-    
+    echo "Không tìm thấy trang bạn tìm. Vui lòng click <a href='?'>Vào đây</a> để quay lại trang chủ";
 }
 
 function list_customerAction() {
@@ -32,7 +32,7 @@ function list_customerAction() {
     $data['list_customer'] = $list_customer;
     $data['start'] = $start;
     $data['get_pagging'] = $get_pagging;
-    
+
     //update_room khi tồn tại nut lưu
     if (isset($_POST['save-update-customer-id'])) {
         update_customerAction();
@@ -50,7 +50,7 @@ function list_customerAction() {
 
 function update_customerAction() {
     if (isset($_POST['save-update-customer-id'])) {
-        
+
         $cus_code = $_POST['customerId'];
         $data = array(
             'name' => $_POST['customerName'],
@@ -76,14 +76,13 @@ function update_customerAction() {
             'name' => $customer_id['name'],
             'phone' => $customer_id['phone'],
             'address' => $customer_id['address'],
-            'cmnd'=>$customer_id['cmnd'],
+            'cmnd' => $customer_id['cmnd'],
             'email' => $customer_id['email'],
-            'state'=>$customer_id['state']
+            'state' => $customer_id['state']
         );
         echo json_encode($result);
         //echo $customer_id['email'];
     }
-   
 }
 
 function delete_roomAction() {

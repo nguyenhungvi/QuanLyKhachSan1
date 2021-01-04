@@ -7,7 +7,7 @@ get_sidebar();
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="header-icon">
-            <i class="fa fa-users"></i>
+            <i class="hvr-buzz-out fa fa-hotel"></i>
         </div>
         <div class="header-title">
             <h1>Quản lý đặt phòng</h1>
@@ -21,17 +21,46 @@ get_sidebar();
     <section class="content content-wp">
         <div class="row">
             <div class="col-sm-12">
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                <div class="btn-group">
-                    <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
-                    <ul class="dropdown-menu exp-drop" role="menu">
-                        <li>
-                            <a href="#" onclick="$('#dataTableExample1').tableExport({type: 'pdf', pdfFontSize: '7', escape: 'false'});"> 
-                                <img src="public/dist/img/pdf.png" width="24" alt="logo"> PDF</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
+                
+                <!--BẢng danh sách phòng mà khách hàng đặt-->
+                <?php
+                if (!empty($list_room_detail_book)) {
+                    ?>
+                    <div class = "table-responsive">
+                        <table id = "dataTableExample1" class = "table table-bordered table-striped table-hover text-center">
+                            <thead>
+                                <tr class = "info">
+                                    <th class = "col-md-3">STT</th>
+                                    <th class = "col-md-3">Số phòng</th>
+                                    <th class = "col-md-3">Ngày nhận</th>
+                                    <th class = "col-md-3">Ngày trả</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (!empty($list_room_detail_book)) {
+                                    $t = 0;
+                                    foreach ($list_room_detail_book as $detail_room) {
+                                        $t++;
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $t; ?></td>
+                                            <td><?php echo $detail_room['roomNumber']; ?></td>
+                                            <td><?php echo $detail_room['check_in']; ?></td>
+                                            <td><?php echo $detail_room['check_out']; ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php
+                }
+                ?>
+                
+                <!-- Bảng chi tiêt đặt phòng -->
                 <div class="table-responsive">
                     <table id="dataTableExample1" class="table table-bordered table-striped table-hover text-center">
                         <thead>
@@ -70,6 +99,7 @@ get_sidebar();
                         </tbody>
                     </table>
                 </div>
+                
 
                 <!--Bảng phụ thu-->
                 <?php
@@ -129,27 +159,27 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <!--<input type="hidden" name="customerId" value=""/>-->
-                                            <label class="control-label">Số phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số phòng:</label>
                                             <input type="number" name="detailbillNumberRoom" min="1" max="" placeholder="" value="" class="form-control"/>
                                         </div>
                                         <div class="col-md-4 form-group date">
                                             <input type="hidden" name="detailbillId" value=""/>
-                                            <label class="control-label">Ngày nhận phòng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày nhận phòng:</label>
                                             <!--<input type="text" name="billReceived_date" placeholder="" value="" class="form-control">-->
-                                            <input type="datetime" id='received-date' name="detailbillCheckIn"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                            <input type="datetime" id='received-date' name="detailbillCheckIn"  class="form-control years" style="position: relative;" value=""/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
                                         </div>
                                         <div class="col-md-4 form-group date">
-                                            <label class="control-label">Ngày trả phòng</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày trả phòng</label>
                                             <!--<input type="text" name="billPay_date" placeholder="" value="" class="form-control">-->
-                                            <input type="datetime" id='pay-date' name="detailbillCheckOut" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 30px;right: 30px;"></i>
+                                            <input type="datetime" id='pay-date' name="detailbillCheckOut" class="form-control years" style="position: relative;"/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Số người lớn:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số người lớn:</label>
                                             <input type="number" name="detailbill_Adults" placeholder="" value="" class="form-control"/>
                                         </div>
                                         <!--Trạng thái-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Số trẻ em:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số trẻ em:</label>
                                             <input type="number" name="detailbill_Childrens" placeholder="" value="" class="form-control"/>
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">

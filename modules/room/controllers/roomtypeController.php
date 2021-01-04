@@ -10,7 +10,7 @@ function construct() {
 }
 
 function indexAction() {
-    
+    echo "Không tìm thấy trang bạn tìm. Vui lòng click <a href='?'>Vào đây</a> để quay lại trang chủ";
 }
 
 function list_room_typeAction() {

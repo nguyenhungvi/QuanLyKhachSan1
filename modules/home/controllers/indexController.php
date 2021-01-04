@@ -6,7 +6,7 @@ function construct() {
 }
 
 function indexAction() {
-    load('helper','format');
+    load('helper', 'format');
     $info_revenue_month = get_revenue_month();
     $x1 = 1;
     $x2 = 2;
@@ -89,15 +89,16 @@ function indexAction() {
         array("x" => $x12, "y" => $y12)
     );
 //Thống kê loại phòng ưa chuộng
-    $dataPoints1=get_revenue_room_type();
+    $dataPoints1 = get_revenue_room_type();
     $data['dataPoints'] = $dataPoints;
     $data['dataPoints1'] = $dataPoints1;
-    
+
 //Tổng tiền trong 1 năm
-    $sum_money_one_year=get_sum_money_year_now();
+    $sum_money_one_year = get_sum_money_year_now();
     $data['sum_money_one_year'] = $sum_money_one_year;
 //Tổng số khách hàng
-    $number_customer=get_number_client();
+    $number_customer = get_number_client();
     $data['number_customer'] = $number_customer;
+
     load_view('index', $data);
 }

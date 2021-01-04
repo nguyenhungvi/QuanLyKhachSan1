@@ -7,7 +7,7 @@ get_sidebar();
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="header-icon">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
             <h1>Sản phẩm</h1>
@@ -23,7 +23,7 @@ get_sidebar();
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         ?>
                         <div class="buttonexport" id="buttonlist"> 
-                            <button type="button" name="productAdd" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm sản phẩm</button>
+                            <button type="button" name="productAdd" class="btn btn-add btn-sm m-b-10" data-toggle="modal" data-target="#customer3" room-id=""><i class="fa fa-plus"></i>Thêm sản phẩm</button>
                         </div>
                     <?php }
                     ?>
@@ -86,7 +86,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Thêm sản phẩm</h3>
+                        <h3><i class="fa fa-product-hunt m-r-5"></i> Thêm sản phẩm</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -96,17 +96,17 @@ get_sidebar();
                                         <!-- Tên sản phẩm-->
                                         <div class="col-md-4 form-group">
                                             <!--<input type="hidden" name="productId" value=""/>-->
-                                            <label class="control-label">Tên sản phẩm:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên sản phẩm:</label>
                                             <input type="text" name="product_Name" placeholder="" value="" class="form-control">
                                         </div>
                                         <!--Giá-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Giá:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá:</label>
                                             <input type="text" name="product_Price" placeholder="" value="" class="form-control">
                                         </div>
                                         <!--Số lượng-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Số lượng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số lượng:</label>
                                             <input type="text" name="product_Number" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
@@ -134,7 +134,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật sản phẩm</h3>
+                        <h3><i class="fa fa-product-hunt m-r-5"></i> Cập nhật sản phẩm</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -144,16 +144,16 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <input type="hidden" name="productId" value=""/>
-                                            <label class="control-label">Tên sản phẩm:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên sản phẩm:</label>
                                             <input type="text" name="productName" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Giá sản phẩm:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá sản phẩm:</label>
                                             <input type="text" name="productPrice" placeholder="" value="" class="form-control">
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Số lượng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số lượng:</label>
                                             <input type="text" name="productNumber" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">

@@ -12,6 +12,9 @@ function indexAction() {
         
         $list_detail_surcharge=get_list_detail_surcharge($_GET['id']);
         $data['list_detail_surcharge'] = $list_detail_surcharge;
+        
+        $list_room_detail_book=get_ist_room_detail_book($_GET['id']);
+        $data['list_room_detail_book'] = $list_room_detail_book;
     }
     if (isset($_POST['save-update-detail-bill-id'])) {
         update_detailbillAction();

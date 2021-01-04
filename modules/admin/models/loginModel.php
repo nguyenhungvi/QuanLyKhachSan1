@@ -13,4 +13,3 @@ function get_role($username, $password){
     $result=db_fetch_row("SELECT * FROM `admin` WHERE `username`='{$username}' AND `password`='{$password}'");
     return $result;
 }
-

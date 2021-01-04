@@ -7,7 +7,7 @@ function construct() {
 }
 
 function indexAction() {
-    
+    echo "Không tìm thấy trang bạn tìm. Vui lòng click <a href='?'>Vào đây</a> để quay lại trang chủ";
 }
 
 function list_roomAction() {
@@ -35,31 +35,66 @@ function list_roomAction() {
     //truyền loại phòng từ database vô controller và đẩy qua view
     $list_room_type = get_list_room_type();
     $data['list_room_type'] = $list_room_type;
-    
+
+
     //update_room khi tồn tại nut lưu
-    if(isset($_POST['save-update-room-id'])){
+    if (isset($_POST['save-update-room-id'])) {
         update_roomAction();
     }
     //delete_room_id khi có tồn tại nút yes
-    if(isset($_POST['btn-delete-room'])){
+    if (isset($_POST['btn-delete-room'])) {
         delete_roomAction();
     }
     //add_room khi tồn tại nút lưu của thêm phòng
-    if(isset($_POST['save-add-room-id'])){
+    if (isset($_POST['save-add-room-id'])) {
         add_roomAction();
+    }
+    if (isset($_POST['load_state'])) {
+        //Kiểm tra ngày hôm nay có những phòng nào đc đặt, nếu đặt thì cho phòng đó có trạng thái là đã đặt
+        $list_room_detailbook = get_list_room_detail_book_room();
+        //Kiểm tra xem các phòng này đã chuyển thành trạng thái là 1 chưa nếu chưa thì update
+        if (!empty($list_room_detailbook)) {
+            foreach ($list_room_detailbook as $room) {
+                if ($room['state'] == 0) {
+                    $data_room = array(
+                        'state' => 1
+                    );
+                    update_room_to_detailbook_room($data_room, $room['id']);
+                }
+            }
+        }
+
+        //Kiểm tra ngày hôm nay có phòng nào trả không, nếu có thì cho trangjthais phòng đó =0
+        $list_room_detailbook_check_out = get_list_room_detail_book_room_check_out();
+        //Kiểm tra xem các phòng này đã chuyển thành trạng thái là 0 chưa nếu chưa thì update
+        if (!empty($list_room_detailbook_check_out)) {
+            foreach ($list_room_detailbook_check_out as $room) {
+                if ($room['state'] == 1) {
+                    $data_room_check_out = array(
+                        'state' => 0
+                    );
+                    update_room_to_detailbook_room($data_room_check_out, $room['id']);
+                }
+            }
+        }
+        if (isset($_GET['page'])) {
+            redirect("?mod=room&controller=room&action=list_room&page={$_GET['page']}");
+        } else {
+            redirect("?mod=room&controller=room&action=list_room");
+        }
     }
     load_view('room', $data);
 }
 
 function update_roomAction() {
-    if(isset($_POST['save-update-room-id'])){
-        $room_id=$_POST['roomId'];
-        $data=array(
-            'roomNumber'=>$_POST['roomNumber'],
-            'typeCode'=>$_POST['roomType'],
-            'state'=>$_POST['roomState']
+    if (isset($_POST['save-update-room-id'])) {
+        $room_id = $_POST['roomId'];
+        $data = array(
+            'roomNumber' => $_POST['roomNumber'],
+            'typeCode' => $_POST['roomType'],
+            'state' => $_POST['roomState']
         );
-        update_info_room_id($data,$room_id);
+        update_info_room_id($data, $room_id);
         redirect("?mod=room&controller=room&action=list_room");
     }
     if (isset($_POST['id'])) {
@@ -75,20 +110,20 @@ function update_roomAction() {
     }
 }
 
-function delete_roomAction(){
-    if(isset($_POST['btn-delete-room'])){
-        $id=$_POST['roomId'];
+function delete_roomAction() {
+    if (isset($_POST['btn-delete-room'])) {
+        $id = $_POST['roomId'];
         delete_room_id($id);
         redirect("?mod=room&controller=room&action=list_room");
     }
 }
 
-function add_roomAction(){
-    if(isset($_POST['save-add-room-id'])){
-        $data=array(
-            'roomNumber'=>$_POST['roomNumber'],
-            'typeCode'=>$_POST['roomType'],
-            'state'=>$_POST['roomState']
+function add_roomAction() {
+    if (isset($_POST['save-add-room-id'])) {
+        $data = array(
+            'roomNumber' => $_POST['roomNumber'],
+            'typeCode' => $_POST['roomType'],
+            'state' => $_POST['roomState']
         );
         add_room($data);
         redirect("?mod=room&controller=room&action=list_room");

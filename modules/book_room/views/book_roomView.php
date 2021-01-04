@@ -31,24 +31,25 @@ get_sidebar();
                         <div class="detail">
                             <div class="field-wl">
                                 <label class="lbl-book">Họ và tên</label>
-                                <input type="text" name="name_BookRoom" class="input-book"/>
+                                <input type="text" name="name_BookRoom" class="input-book" placeholder=" <?php echo error('fullname'); ?>" value="<?php echo set_value('fullname'); ?>"/>
+                                 <?php // echo form_error('fullname'); ?>
                             </div>
                             <div class="field-wr">
                                 <label class="lbl-book">CMND</label>
-                                <input type="number" name="cmnd_BookRoom" class="input-book"/>
+                                <input type="text" name="cmnd_BookRoom" class="input-book" placeholder=" <?php echo error('cmnd'); ?>" value="<?php echo set_value('cmnd'); ?>"/>
                             </div>
                             <div class="field-wl">
                                 <label class="lbl-book">Số điện thoại</label>
-                                <input type="text" name="phone_BookRoom" class="input-book"/>
+                                <input type="text" name="phone_BookRoom" class="input-book" placeholder=" <?php echo error('phone'); ?>" value="<?php echo set_value('phone'); ?>"/>
                             </div>
                             <div class="field-wr">
                                 <label class="lbl-book">Email</label>
-                                <input type="email" name="email_BookRoom" class="input-book"/>
+                                <input type="email" name="email_BookRoom" class="input-book" placeholder=" <?php echo error('email'); ?>" value="<?php echo set_value('email'); ?>"/>
                             </div>
                             <div class="">
                                 <label class="lbl-book">Địa chỉ</label>
                                 <!--<input type="text" class="input-book"/>-->
-                                <textarea class="input-book" name="address_BookRoom" style="min-height:130px;"></textarea>
+                                <textarea class="input-book" name="address_BookRoom" placeholder=" <?php echo error('address'); ?>" value="<?php echo set_value('address'); ?>" style="min-height:130px;"></textarea>
                             </div>
                         </div>
                     </div>

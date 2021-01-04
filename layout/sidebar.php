@@ -40,7 +40,7 @@
             </li>
             <!--Product-->
             <li class="active">
-                <a href="?mod=product"><i class="fa fa-tachometer"></i><span>Quản lý phụ thu</span>
+                <a href="?mod=product"><i class="fa fa-product-hunt"></i><span>Quản lý phụ thu</span>
                     <span class="pull-right-container">
                     </span>
                 </a>

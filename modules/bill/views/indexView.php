@@ -7,7 +7,7 @@ get_sidebar();
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="header-icon">
-            <i class="fa fa-users"></i>
+            <i class="hvr-buzz-out fa fa-hotel"></i>
         </div>
         <div class="header-title">
             <h1>Quản lý đặt phòng</h1>
@@ -18,16 +18,6 @@ get_sidebar();
     <section class="content content-wp">
         <div class="row">
             <div class="col-sm-12">
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                <div class="btn-group">
-                    <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Xuất dữ liệu</button>
-                    <ul class="dropdown-menu exp-drop" role="menu">
-                        <li>
-                            <a href="#" onclick="$('#dataTableExample1').tableExport({type: 'pdf', pdfFontSize: '7', escape: 'false'});"> 
-                                <img src="public/dist/img/pdf.png" width="24" alt="logo"> PDF</a>
-                        </li>
-                    </ul>
-                </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="table-responsive">
                     <table id="dataTableExample1" class="table table-bordered table-striped table-hover text-center">
@@ -84,7 +74,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Thêm phụ thu</h3>
+                        <h3><i class="fa fa-hotel m-r-5"></i> Thêm phụ thu</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -94,7 +84,7 @@ get_sidebar();
                                         <!-- Tên sản phẩm-->
                                         <div class="col-md-4 form-group">
                                             <input type="hidden" name="surcharge_Booking_code" value=""/>
-                                            <label class="control-label">Tên sản phẩm:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên sản phẩm:</label>
                                             <!--<input type="text" name="product_Name" placeholder="" value="" class="form-control">-->
                                             <select class="form-control" name="surcharge_Name" id="product_Name">
                                                 <?php
@@ -108,7 +98,7 @@ get_sidebar();
                                         </div>
                                         <!--Số lượng-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Số lượng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Số lượng:</label>
                                             <input type="number" min="1" name="surcharge_Number" placeholder="" value="" class="form-control">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
@@ -135,7 +125,7 @@ get_sidebar();
                 <div class="modal-content">
                     <div class="modal-header modal-header-primary">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3><i class="fa fa-user m-r-5"></i> Cập nhật hóa đơn</h3>
+                        <h3><i class="fa fa-hotel m-r-5"></i> Cập nhật hóa đơn</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -145,16 +135,16 @@ get_sidebar();
                                         <!-- Số phòng-->
                                         <div class="col-md-4 form-group">
                                             <input type="hidden" name="billId" value=""/>
-                                            <label class="control-label">Tên khách hàng:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tên khách hàng:</label>
                                             <p type="text" name="billName" placeholder="" value="" class="form-control"></p>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Tổng tiền:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Tổng tiền:</label>
                                             <p type="text" name="billTotal" placeholder="" value="" class="form-control"></p>
                                         </div>
                                         <!--Trạng thái-->
                                         <div class="col-md-4 form-group">
-                                            <label class="control-label">Trạng thái:</label>
+                                            <label class="control-label" style="margin-bottom: 10px;">Trạng thái:</label>
                                             <select class="form-control" name="billState" id="billState">
                                                 <option value="0">Chưa thanh toán</option>
                                                 <option value="1">Đã thanh toán</option>

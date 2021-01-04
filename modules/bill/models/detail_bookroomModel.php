@@ -13,6 +13,14 @@ function get_list_detail_surcharge($booking_code){
     return $result;
 }
 
+//Lấy danh sách phòng mà khách hàng đang ở
+function get_ist_room_detail_book($booking_code){
+    $result=db_fetch_array("SELECT room.roomNumber, detailbook.check_in,detailbook.check_out
+FROM `detailbook_room`,`detailbook`,`room`
+WHERE detailbook.booking_code={$booking_code} AND detailbook_room.detail_book_id=detailbook.id AND detailbook_room.room_id=room.id");
+    return $result;
+}
+
 //update laijdetail book
 function update_info_detail_bookroom($data,$id){
     db_update('detailbook', $data,"`id`={$id}");
