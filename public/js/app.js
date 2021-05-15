@@ -83,6 +83,9 @@ $(document).ready(function () {
                 $("input[name='roomtypeId']").val(data.id);
                 $("input[name='roomtypeName']").val(data.name);
                 $("input[name='roomtypePrice']").val(data.price);
+                $("input[name='roomtype_up_pricediscount']").val(data.price_discount);
+                $("input[name='roomtype_up_datestart']").val(data.date_start);
+                $("input[name='roomtype_up_dateend']").val(data.date_end);
 //                //CKEDITOR.instances['room_type_Description'].setData(data.description);
                 console.log(data.price);
             },
@@ -317,40 +320,68 @@ $(document).ready(function () {
 
 
 });
+
 //===============================================================================
-// Số phòng trống theo ngày tìm kiếm trong đặt phòng
-//ajax tìm kiếm phòng trống
-//$(document).ready(function () {
-//    $("input[name='checkout_BookRoom']").change(function () {
-//        var check_in = $('#received-date').val();
-//        var check_out = $('#pay-date').val();
-//        console.log(check_in, '=======', check_out);
-//        var data = {check_in: check_in, check_out:check_out};
-////        console.log(data);
-//        $.ajax({
-//            url: '?mod=book_room&action=check_date', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
-//            method: 'POST', //POST OR GET, mặc định GET
-//            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
-////            dataType: 'text', //html,text, script
-//            dataType: 'json', //dataType kiểu json
-//            success: function (data) {
-//                //Xử lý dữ liệu trả về
-////                $("input[name='productId']").val(data.id);
-////                $("input[name='productName']").val(data.name_product);
-////                $("input[name='productPrice']").val(data.price);
-////                $("input[name='productNumber']").val(data.number);
-////                console.log(roomState);
-//                  console.log(data);
-//            },
-////            error: function (xhr, ajaxOptions, thrownError) {
-////                alert(xhr.status);
-////                alert(thrownError);
-////            }
-//            error: function (data) {
-//                console.log("AJAX ERROR:", data);
-//            }
-//        });
-//    });
-//
-//
-//});
+// SLIDE
+//ajax update Slide
+$(document).ready(function () {
+    $("button[name='slideUpdate']").click(function () {
+        var id = $(this).attr('slide_up-id');
+        var data = { id: id };
+        console.log(id);
+        $.ajax({
+            url: '?mod=slide&controller=index&action=update_slide', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                console.log(data);
+                $("input[name='slide_up_id']").val(data.id_slide);
+                $("input[name='slide_del_id']").val(data.id_slide);
+                $("input[name='slide_up_datestart']").val(data.date_start);
+                $("input[name='slide_up_dateend']").val(data.date_end);
+                
+            },
+            // error: function (xhr, ajaxOptions, thrownError) {
+            //     alert(xhr.status);
+            //     alert(thrownError);
+            // }
+            error: function (data) {
+                console.log("AJAX ERROR:", data);
+            }
+        });
+    });
+});
+
+//===============================================================================
+// SLIDE
+//ajax delete Slide
+$(document).ready(function () {
+    $("button[name='slideDelete']").click(function () {
+        var id = $(this).attr('del-slide-id');
+        var data = { id: id };
+        console.log(id);
+        $.ajax({
+            url: '?mod=slide&controller=index&action=delete_slide', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //            dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                console.log(data);
+                $("input[name='slide_del_id']").val(data.id_slide);
+                
+            },
+            // error: function (xhr, ajaxOptions, thrownError) {
+            //     alert(xhr.status);
+            //     alert(thrownError);
+            // }
+            error: function (data) {
+                console.log("AJAX ERROR:", data);
+            }
+        });
+    });
+});

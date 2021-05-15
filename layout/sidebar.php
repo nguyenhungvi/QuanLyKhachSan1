@@ -45,6 +45,14 @@
                     </span>
                 </a>
             </li>
+
+            <!--Slide-->
+            <li class="active">
+                <a href="?mod=slide"><i class="fa fa-sliders"></i><span>Quản lý quảng cáo</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar -->

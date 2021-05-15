@@ -12,7 +12,7 @@ ob_start();
  * 
  */
 
-$config['base_url'] = "http://localhost/Backend/DoAn/QuanLyKhachSan1/";
+$config['base_url'] = "http://localhost/QuanLyKhachSan1/";
 
 
 $config['default_module'] = 'home';

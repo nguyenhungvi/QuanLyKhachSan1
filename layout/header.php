@@ -74,6 +74,10 @@
                     <!-- Sidebar toggle button-->
                     <span class="sr-only">Toggle navigation</span>
                     <span class="pe-7s-angle-left-circle"></span>
+                    <span id="<?php if (isset($message_submit)) echo "message-submit"; ?>" style="<?php if (isset($message_submit)) echo "display: initial;position: relative;background: #fff;
+                          font-size: 20px;
+                          padding: 10px;
+                          color: #e5343d;"; ?>"><?php if (isset($message_submit)) echo $message_submit; ?></span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">

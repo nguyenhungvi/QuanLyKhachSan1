@@ -49,6 +49,17 @@ $('#pay-date').datepicker({
     dateFormat: "yy-mm-dd"
 });
 
+//Chọn ngày tháng năm1
+$('#received-date1').datepicker({
+    uiLibrary: 'bootstrap4',
+    dateFormat: "yy-mm-dd"
+});
+
+$('#pay-date1').datepicker({
+    uiLibrary: 'bootstrap4',
+    dateFormat: "yy-mm-dd"
+});
+
 // Lấy id của product để xóa
 $(document).ready(function () {
     $("button[name='productDelete']").click(function (){
@@ -65,4 +76,11 @@ $(document).ready(function () {
         //console.log(id);
         $("input[name='surcharge_Booking_code']").val(id);
     });
+});
+
+//Message-submit
+$(document).ready(function(){
+    $("#message-submit").animate({left: '10px'},2500);
+    $("#message-submit").animate({left: '0px'});
+    $("#message-submit" ).fadeOut();
 });

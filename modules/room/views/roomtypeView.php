@@ -102,10 +102,24 @@ get_sidebar();
                                             <label class="control-label" style="margin-bottom: 10px;">Giá loại phòng:</label>
                                             <input type="number" name="roomtypePriceadd" min="0" placeholder="" value="" class="form-control">
                                         </div>
+                                        <!-- giá giảm roomtype-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá giảm loại phòng:</label>
+                                            <input type="number" name="roomtype_add_pricediscount" min="0" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <!--Ngày bắt đầu-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày bắt đầu:</label>
+                                            <input type="datetime" id='received-date' name="roomtype_add_datestart"  class="form-control years" style="position: relative;" value="<?php echo date('Y-m-d');?>"/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
+                                        </div>
+                                        <!--Ngày kết thúc-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày kết thúc:</label>
+                                            <input type="datetime" id='pay-date' name="roomtype_add_dateend" class="form-control years" style="position: relative;" value="<?php echo date('Y-m-d');?>"/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
+                                        </div>
 
                                         <div class="col-md-4 form-group">
                                             <label class="control-label" style="margin-bottom: 10px; margin-top: 5px;">Hình ảnh loại phòng:</label>
-                                            <!--<input type="file" name="roomtypeImage" value="" class="form-control">-->
                                             <input type="file" name="roomtypeImageadd" value="">
                                             <?php echo form_error('image'); ?>
                                         </div>
@@ -150,6 +164,22 @@ get_sidebar();
                                         <div class="col-md-4 form-group">
                                             <label class="control-label" style="margin-bottom: 10px;">Giá loại phòng:</label>
                                             <input type="number" min="0" name="roomtypePrice" placeholder="" value="" class="form-control">
+                                        </div>
+
+                                        <!-- giá giảm roomtype-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Giá giảm loại phòng:</label>
+                                            <input type="number" name="roomtype_up_pricediscount" min="0" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <!--Ngày bắt đầu-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày bắt đầu:</label>
+                                            <input type="datetime" id='received-date1' name="roomtype_up_datestart"  class="form-control years" style="position: relative;" value="<?php echo date('Y-m-d');?>"/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
+                                        </div>
+                                        <!--Ngày kết thúc-->
+                                        <div class="col-md-4 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;">Ngày kết thúc:</label>
+                                            <input type="datetime" id='pay-date1' name="roomtype_up_dateend" class="form-control years" style="position: relative;" value="<?php echo date('Y-m-d');?>"/><i class="fa fa-calendar" style="position: absolute;top: 40px;right: 30px;"></i>
                                         </div>
 
                                         <div class="col-md-4 form-group">

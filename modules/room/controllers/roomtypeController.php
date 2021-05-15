@@ -69,7 +69,10 @@ function update_room_typeAction() {
                     $data = array(
                         'name' => $_POST['roomtypeName'],
                         'price' => $_POST['roomtypePrice'],
-                        'image' => $_FILES['roomtypeImage']['name']
+                        'image' => $_FILES['roomtypeImage']['name'],
+                        'price_discount' => $_POST['roomtype_up_pricediscount'],
+                        'date_start' => $_POST['roomtype_up_datestart'],
+                        'date_end' => $_POST['roomtype_up_dateend'],
                     );
                     update_info_room_type_id($data, $room_id);
                     redirect("?mod=room&controller=roomtype&action=list_room_type");
@@ -78,7 +81,10 @@ function update_room_typeAction() {
         } else {
             $data = array(
                 'name' => $_POST['roomtypeName'],
-                'price' => $_POST['roomtypePrice']
+                'price' => $_POST['roomtypePrice'],
+                'price_discount' => $_POST['roomtype_up_pricediscount'],
+                'date_start' => $_POST['roomtype_up_datestart'],
+                'date_end' => $_POST['roomtype_up_dateend'],
             );
             update_info_room_type_id($data, $room_id);
             redirect("?mod=room&controller=roomtype&action=list_room_type");
@@ -91,6 +97,9 @@ function update_room_typeAction() {
             'id' => $room_type_id['id'],
             'name' => $room_type_id['name'],
             'price' => $room_type_id['price'],
+            'price_discount' =>  $room_type_id['price_discount'],
+            'date_start' =>  $room_type_id['date_start'],
+            'date_end' =>  $room_type_id['date_end'],
                 //'image' => $room_type_id['image']
         );
         echo json_encode($result);
@@ -124,6 +133,9 @@ function add_room_typeAction() {
                     $data = array(
                         'name' => $_POST['roomtypeNameadd'],
                         'price' => $_POST['roomtypePriceadd'],
+                        'price_discount' => $_POST['roomtype_add_pricediscount'],
+                        'date_start' => $_POST['roomtype_add_datestart'],
+                        'date_end' => $_POST['roomtype_add_dateend'],
                         'image' => $_FILES['roomtypeImageadd']['name']
                     );
                     //update_info_room_type_id($data,$room_id);
@@ -134,7 +146,10 @@ function add_room_typeAction() {
         } else {
             $data = array(
                 'name' => $_POST['roomtypeNameadd'],
-                'price' => $_POST['roomtypePriceadd']
+                'price' => $_POST['roomtypePriceadd'],
+                'price_discount' => $_POST['roomtype_add_pricediscount'],
+                'date_start' => $_POST['roomtype_add_datestart'],
+                'date_end' => $_POST['roomtype_add_dateend']
             );
             //update_info_room_type_id($data, $room_id);
             insert_info_room_type($data);
