@@ -19,3 +19,13 @@ function get_number_client(){
     $result= db_fetch_row("SELECT COUNT(cus_code) as number_customer FROM `customer`");
     return $result;
 }
+
+function update_price_discount(){
+    $data=array(
+        "price_discount"=>0
+    );
+    
+    $where="( CURDATE() NOT BETWEEN date_start and date_end ) AND (date_start < CURDATE())";
+    $result=db_update("roomtype",$data,$where);
+    return $result;
+}

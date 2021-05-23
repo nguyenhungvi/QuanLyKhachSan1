@@ -100,5 +100,8 @@ function indexAction() {
     $number_customer = get_number_client();
     $data['number_customer'] = $number_customer;
 
+//UPDATE ROOM-TYPE
+    update_price_discount();
+
     load_view('index', $data);
 }
