@@ -71,11 +71,15 @@ get_sidebar();
                                             <?php
                                             $tong_tien_1_ngay = 0;
                                             foreach ($get_info_cart as $info_cart) {
-                                                $tong_tien_1_ngay = $tong_tien_1_ngay + $info_cart['total_sum'];
+                                                //$tong_tien_1_ngay = $tong_tien_1_ngay + $info_cart['total_sum'];
                                                 ?>
                                                 <tr>
                                                     <td><span><?php echo $info_cart['name']; ?></span> x <span><?php echo $info_cart['number_room']; ?> </span></span> x <span><?php echo $info_cart['number_day']; ?> </span></td>
-                                                    <td><?php echo $info_cart['total_sum']; ?></td>
+                                                    <td><?php if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
+                                                           echo $info_cart['total_sum_discount'];
+                                                        }else{
+                                                            echo $info_cart['total_sum'];
+                                                        } ?></td>
                                                 </tr>
                                                 <?php
                                             }
@@ -84,7 +88,7 @@ get_sidebar();
                                         <tfoot>
                                             <tr>
                                                 <td><span>Tổng tiền: (VND)</span></td>
-                                                <td><span><?php echo $tong_tien_1_ngay; ?></span></td>
+                                                <td><span><?php echo $total_sum; ?></span></td>
                                             </tr>
                                         </tfoot>
                                     </table>

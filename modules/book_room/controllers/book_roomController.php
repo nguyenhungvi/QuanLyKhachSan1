@@ -9,6 +9,16 @@ function construct() {
 function indexAction() {
     //Lấy thông tin trong giỏ hàng
     $get_info_cart = get_info_cart();
+    //Tinh tong tien dat phong tinh ca phong co giam gia va phong khong giam gia
+    $sum_money_many_day=0;
+    foreach ($get_info_cart as $info_cart){
+        if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
+            $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum_discount'];
+        }else{
+            $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
+        }
+    }
+    $data['total_sum']=$sum_money_many_day;
     $data['get_info_cart'] = $get_info_cart;
     //TEST DỮ LIỆU
 //    $c=array(1,2,3,4,5);
@@ -70,11 +80,11 @@ function indexAction() {
 
         //Kết luận
         if (empty($error)) {
-            //tổng tiền cho many day
-            $sum_money_many_day = 0;
-            foreach ($get_info_cart as $info_cart) {
-                $sum_money_many_day = $sum_money_many_day + $info_cart['total_sum'];
-            }
+            // //tổng tiền cho many day
+            // $sum_money_many_day = 0;
+            // foreach ($get_info_cart as $info_cart) {
+            //     $sum_money_many_day = $sum_money_many_day + $info_cart['total_sum'];
+            // }
             if (get_num_row("`customer`", $_POST['cmnd_BookRoom']) == 0) {
                 // thêm khách hàng
                 $data_customer = array(
@@ -102,7 +112,7 @@ function indexAction() {
                     $data_detail_book = array(
                         'booking_code' => $id_bookroom,
                         'room_type_id' => $info_cart['id_roomtype'],
-                        'price' => $info_cart['price'],
+                        //'price' => $info_cart['price'],
                         'number_room' => $info_cart['number_room'],
                         'date_set' => date("Y-m-d"),
                         'check_in' => $info_cart['check_in'],
@@ -110,6 +120,11 @@ function indexAction() {
                         'number_adults' => $info_cart['number_adults'],
                         'number_childrens' => $info_cart['number_childrens'],
                     );
+                    if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
+                        $data_detail_book['price']=$info_cart['price_discount'];
+                    }else{
+                        $data_detail_book['price'] = $info_cart['price'];
+                    }
                     //Lấy id_detail_book mà mình vừa mới thêm vào csdl
                     $id_detail_book = add_detail_book($data_detail_book);
                     //Kiểm tra ngày nhập vào đã có phòng nào dc đặt chưa theo loại phòng

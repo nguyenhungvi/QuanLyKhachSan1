@@ -64,7 +64,13 @@ get_sidebar();
                                         <tr>
                                             <td><p><?php echo $t; ?></p></td>
                                             <td><?php echo $info_room['name']; ?></td>
-                                            <td><?php echo number_format($info_room['price']); ?></td>
+                                            <td><?php 
+                                            if($info_room['price_discount']>0 && ($info_room['date_start']<= date('Y-m-d') && $info_room['date_end']>= date('Y-m-d'))){
+                                                echo number_format($info_room['price_discount']);
+                                            }else{
+                                                echo number_format($info_room['price']);
+                                            }
+                                             ?></td>
                                             <td><?php echo $info_room['number_room']; ?></td>
                                             <td><?php echo $info_room['check_in']; ?></td>
                                             <td><?php echo $info_room['check_out']; ?></td>

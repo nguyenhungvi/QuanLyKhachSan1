@@ -38,7 +38,7 @@ function add_cart($data) {
 //Thông tin lấy ra trong cart và loại phòng
 function get_info_cart() {
     //Lấy 1 mảng trong database
-    $result = db_fetch_array("SELECT `id_roomtype`,roomtype.name,roomtype.price, `number_room` , cart.check_in,cart.check_out,((roomtype.price*`number_room`)*(DATEDIFF(check_out, check_in)+1)) as total_sum FROM `cart`, `roomtype` WHERE cart.id_roomtype=roomtype.id");
+    $result = db_fetch_array("SELECT `id_roomtype`,roomtype.name,roomtype.price,roomtype.price_discount,roomtype.date_start,roomtype.date_end, `number_room` , cart.check_in,cart.check_out,((roomtype.price*`number_room`)*(DATEDIFF(check_out, check_in)+1)) as total_sum FROM `cart`, `roomtype` WHERE cart.id_roomtype=roomtype.id");
     return $result;
 }
 
