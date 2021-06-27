@@ -20,6 +20,17 @@ function get_number_client(){
     return $result;
 }
 
+// function update_price_discount(){
+//     $data=array(
+//         "price_discount"=>0,
+//         "date_start"=>date("Y-m-d"),
+//         "date_end"=>date("Y-m-d")
+//     );
+    
+//     $where="( CURDATE() NOT BETWEEN date_start and date_end ) AND (date_start < CURDATE())";
+//     $result=db_update("roomtype",$data,$where);
+//     return $result;
+// }
 function update_price_discount(){
     $data=array(
         "price_discount"=>0

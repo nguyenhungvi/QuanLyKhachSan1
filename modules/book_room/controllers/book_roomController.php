@@ -11,14 +11,51 @@ function indexAction() {
     $get_info_cart = get_info_cart();
     //Tinh tong tien dat phong tinh ca phong co giam gia va phong khong giam gia
     $sum_money_many_day=0;
+    $total_money_discount=0;
+    // tổng số tiền được giảm
+    // tổng số ngày =6 x 2500=15000
+    // 12
+    // 7500
+    // 7512= 15000-7488
+    // tổng số tiền chưa giảm giá
+    //$date_discount_money=0;
+
     foreach ($get_info_cart as $info_cart){
-        if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
-            $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum_discount'];
-        }else{
-            $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
-        }
+        // số ngày giảm Tiền theo loại phòng
+        $date_discount_money=get_list_date_discount_money($info_cart["id_roomtype"]);
+
+        echo "<pre>";
+        print_r($date_discount_money);
+        echo "</pre>";
+
+        // Số tiền được giảm trong loại phòng trong ngày giảm
+         $discount_money=$date_discount_money['number_day']*$info_cart["price_discount"]*$info_cart["number_room"];
+        // Số ngày không giảm tien=tổng số ngày - số ngày giảm
+        $date_money= $info_cart["number_day"] - $date_discount_money['number_day'];
+        // Số tiền ngày không khuyến mãi
+        $nodiscount_money = $date_money*$info_cart["price"]*$info_cart["number_room"];
+        // Tổng số tiền phải trả
+        $total_money_discount = $total_money_discount + ($discount_money+$nodiscount_money);
+        // Tổng số tiền khi chưa giảm giá
+        $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
     }
-    $data['total_sum']=$sum_money_many_day;
+    // Số tiền được giảm
+    $be_discount_money=$sum_money_many_day-$total_money_discount;
+
+
+
+
+
+    // foreach ($get_info_cart as $info_cart){
+    //     if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
+    //         $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum_discount'];
+    //     }else{
+    //         $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
+    //     }
+    // }
+    $data['total_money']=$sum_money_many_day;
+    $data['total_money_be_discount']=$be_discount_money;
+    $data['total_money_late_discount']=$total_money_discount;
     $data['get_info_cart'] = $get_info_cart;
     //TEST DỮ LIỆU
 //    $c=array(1,2,3,4,5);
@@ -100,7 +137,7 @@ function indexAction() {
                 //Thêm book_room
                 $data_book_room = array(
                     'cus_code' => $id_customer,
-                    'total' => $sum_money_many_day,
+                    'total' => $total_money_discount,
                     'state' => 0
                 );
                 //lấy id book room truyền vô database bảng detail book room
@@ -112,7 +149,7 @@ function indexAction() {
                     $data_detail_book = array(
                         'booking_code' => $id_bookroom,
                         'room_type_id' => $info_cart['id_roomtype'],
-                        //'price' => $info_cart['price'],
+                        'price' => $info_cart['price'],
                         'number_room' => $info_cart['number_room'],
                         'date_set' => date("Y-m-d"),
                         'check_in' => $info_cart['check_in'],
@@ -120,11 +157,7 @@ function indexAction() {
                         'number_adults' => $info_cart['number_adults'],
                         'number_childrens' => $info_cart['number_childrens'],
                     );
-                    if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
-                        $data_detail_book['price']=$info_cart['price_discount'];
-                    }else{
-                        $data_detail_book['price'] = $info_cart['price'];
-                    }
+                    
                     //Lấy id_detail_book mà mình vừa mới thêm vào csdl
                     $id_detail_book = add_detail_book($data_detail_book);
                     //Kiểm tra ngày nhập vào đã có phòng nào dc đặt chưa theo loại phòng
@@ -172,11 +205,12 @@ function indexAction() {
                 //Thêm book_room
                 $data_book_room = array(
                     'cus_code' => $id_customer['cus_code'],
-                    'total' => $sum_money_many_day,
+                    'total' => $total_money_discount,
                     'state' => 0
                 );
                 //lấy id book room truyền vô database bảng detail book room
                 $id_bookroom = add_book_room($data_book_room);
+
                 //thêm detail book room
                 //chạy vòng lap for để thêm từng loại phòng vô trong ảng có cùng book room
                 foreach ($get_info_cart as $info_cart) {
@@ -228,9 +262,7 @@ function indexAction() {
                         //Xóa cái mã id_room ra khỏi mảng để random tiếp nếu người đặt đặt số phòng >1
                         unset($c[$rand_keys]);
                     }
-                    //KÊT THÚC SỬA
-                    //add_detail_book($data_detail_book);
-                    //SỬa ở trên nhớ sửa ở đây nữa
+                    
                 }
 
                 detete_all_cart('cart');

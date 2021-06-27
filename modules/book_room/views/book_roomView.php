@@ -75,11 +75,9 @@ get_sidebar();
                                                 ?>
                                                 <tr>
                                                     <td><span><?php echo $info_cart['name']; ?></span> x <span><?php echo $info_cart['number_room']; ?> </span></span> x <span><?php echo $info_cart['number_day']; ?> </span></td>
-                                                    <td><?php if($info_cart['date_start']<= date('Y-m-d') && date('Y-m-d')<=$info_cart['date_end'] && $info_cart['price_discount']>0){
-                                                           echo $info_cart['total_sum_discount'];
-                                                        }else{
+                                                    <td><?php 
                                                             echo $info_cart['total_sum'];
-                                                        } ?></td>
+                                                        ?></td>
                                                 </tr>
                                                 <?php
                                             }
@@ -88,7 +86,15 @@ get_sidebar();
                                         <tfoot>
                                             <tr>
                                                 <td><span>Tổng tiền: (VND)</span></td>
-                                                <td><span><?php echo $total_sum; ?></span></td>
+                                                <td><span><?php echo $total_money; ?></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span></span></td>
+                                                <td><span><?php echo $total_money_be_discount; ?></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span></span></td>
+                                                <td><span><?php echo $total_money_late_discount; ?></span></td>
                                             </tr>
                                         </tfoot>
                                     </table>

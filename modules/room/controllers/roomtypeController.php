@@ -26,6 +26,7 @@ function list_room_typeAction() {
     $num_page = ceil($total_row / $num_per_page);
     //Tính chỉ số xuất của bản ghi cho từng page
     $page = isset($_GET['page']) ? (int) ($_GET['page']) : 1;
+    
     //Chỉ số bắt đầu chạy
     $start = ($page - 1) * $num_per_page;
     $list_rooms_type = get_list_roomtype($start, $num_per_page);

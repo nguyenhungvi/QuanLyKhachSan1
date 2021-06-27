@@ -27,6 +27,11 @@ function update_info_room_type_id($data,$id){
     db_update('roomtype', $data,"`id`={$id}");
 }
 
+// update ngày sự kiện khi đã kết thúc
+function update_info_room_type($data){
+    db_update('roomtype', $data , "`date_end` <"+date('Y-m-d')+"");
+}
+
 function delete_room_type_id($id){
     db_delete('roomtype', "`id`={$id}");
 }

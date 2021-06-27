@@ -46,11 +46,12 @@ get_sidebar();
                                 <tr class="info">
                                     <th class="col-md-1">STT</th>
                                     <th class="col-md-3">Tên loại phòng</th>
-                                    <th class="col-md-1">Giá($)</th>
+                                    <!-- <th class="col-md-1">Giá($)</th> -->
                                     <th class="col-md-1">Số lượng</th>
                                     <th class="col-md-2">Ngày nhận phòng</th>
                                     <th class="col-md-2">Ngày trả phòng</th>
-                                    <th class="col-md-1">Thành tiền</th>
+                                    <th class="col-md-1">Số người lớn</th>
+                                    <th class="col-md-1">Số trẻ em</th>
                                     <th class="col-md-1">Chỉnh sửa</th>
                                 </tr>
                             </thead>
@@ -64,17 +65,18 @@ get_sidebar();
                                         <tr>
                                             <td><p><?php echo $t; ?></p></td>
                                             <td><?php echo $info_room['name']; ?></td>
-                                            <td><?php 
-                                            if($info_room['price_discount']>0 && ($info_room['date_start']<= date('Y-m-d') && $info_room['date_end']>= date('Y-m-d'))){
-                                                echo number_format($info_room['price_discount']);
-                                            }else{
-                                                echo number_format($info_room['price']);
-                                            }
-                                             ?></td>
+                                            <!-- <td><?php 
+                                            // if($info_room['price_discount']>0 && ($info_room['date_start']<= date('Y-m-d') && $info_room['date_end']>= date('Y-m-d'))){
+                                            //     echo number_format($info_room['price_discount']);
+                                            // }else{
+                                            //     echo number_format($info_room['price']);
+                                            // }
+                                             ?></td> -->
                                             <td><?php echo $info_room['number_room']; ?></td>
                                             <td><?php echo $info_room['check_in']; ?></td>
                                             <td><?php echo $info_room['check_out']; ?></td>
-                                            <td><?php echo $info_room['total_sum']; ?></td>
+                                            <td><?php echo $info_room['number_adults']; ?></td>
+                                            <td><?php echo $info_room['number_childrens']; ?></td>
                                             <td>
                                                 <button type="button" name="cartUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-cart-id="<?php echo $info_room['id_roomtype'];  ?>" title="Cập nhật giỏ hàng"><i class="fa fa-pencil"></i></button>
                                                 <a href="?mod=book_room&action=cart&del-cart-room-type-id=<?php echo $info_room['id_roomtype']; ?>" name="cart_roomtypeDelete" class="btn btn-danger btn-sm" del-cart-room-type-id="<?php echo $info_room['id_roomtype']; ?>" title="Xóa loại phòng"><i class="fa fa-trash-o"></i> </a>
