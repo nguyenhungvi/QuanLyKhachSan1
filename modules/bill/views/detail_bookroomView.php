@@ -67,11 +67,11 @@ get_sidebar();
                             <tr class="info">
                                 <th class="col-md-1">STT</th>
                                 <th class="col-md-3">Loại phòng</th>
-                                <th class="col-md-2">Giá phòng</th>
+                                <!-- <th class="col-md-2">Giá phòng</th> -->
                                 <th class="col-md-1">Số lượng</th>
                                 <th class="col-md-2">Ngày đặt</th>
                                 <th class="col-md-2">Tổng tiền</th>
-                                <th class="col-md-1">Chỉnh sửa</th>
+                                <!-- <th class="col-md-1">Chỉnh sửa</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -84,13 +84,13 @@ get_sidebar();
                                     <tr>
                                         <td><?php echo $t; ?></td>
                                         <td><?php echo $detail_bookroom['name']; ?></td>
-                                        <td><?php echo $detail_bookroom['price']; ?></td>
+                                        <!-- <td><?php echo $detail_bookroom['price']; ?></td> -->
                                         <td><?php echo $detail_bookroom['number_room']; ?></td>
                                         <td><?php echo $detail_bookroom['date_set']; ?></td>
                                         <td><?php echo $detail_bookroom['total']; ?></td>
-                                        <td>
-                                            <button type="button" name="detailbillUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-detailbill-id="<?php echo $detail_bookroom['id']; ?>"><i class="fa fa-pencil"></i></button>
-                                        </td>
+                                        <!-- <td>
+                                            <button type="button" name="detailbillUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" update-detailbill-id="<?php //echo $detail_bookroom['id']; ?>"><i class="fa fa-pencil"></i></button>
+                                        </td> -->
                                     </tr>
                                     <?php
                                 }

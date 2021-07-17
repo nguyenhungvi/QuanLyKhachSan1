@@ -24,20 +24,29 @@ function indexAction() {
         // số ngày giảm Tiền theo loại phòng
         $date_discount_money=get_list_date_discount_money($info_cart["id_roomtype"]);
 
-        echo "<pre>";
-        print_r($date_discount_money);
-        echo "</pre>";
-
-        // Số tiền được giảm trong loại phòng trong ngày giảm
+        // echo "<pre>";
+        // print_r($date_discount_money);
+        // echo "</pre>";
+        if($date_discount_money['number_day']>=0){
+            // Số tiền được giảm trong loại phòng trong ngày giảm
          $discount_money=$date_discount_money['number_day']*$info_cart["price_discount"]*$info_cart["number_room"];
-        // Số ngày không giảm tien=tổng số ngày - số ngày giảm
-        $date_money= $info_cart["number_day"] - $date_discount_money['number_day'];
-        // Số tiền ngày không khuyến mãi
-        $nodiscount_money = $date_money*$info_cart["price"]*$info_cart["number_room"];
-        // Tổng số tiền phải trả
-        $total_money_discount = $total_money_discount + ($discount_money+$nodiscount_money);
-        // Tổng số tiền khi chưa giảm giá
-        $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
+         // Số ngày không giảm tien=tổng số ngày - số ngày giảm
+         $date_money= $info_cart["number_day"] - $date_discount_money['number_day'];
+         // Số tiền ngày không khuyến mãi
+         $nodiscount_money = $date_money*$info_cart["price"]*$info_cart["number_room"];
+         // Tổng số tiền phải trả
+         $total_money_discount = $total_money_discount + ($discount_money+$nodiscount_money);
+         // Tổng số tiền khi chưa giảm giá
+         $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
+        }else{
+             // Số tiền ngày không khuyến mãi
+         $nodiscount_money = $info_cart["number_day"]*$info_cart["price"]*$info_cart["number_room"];
+         // Tổng số tiền phải trả
+         $total_money_discount = $total_money_discount + $nodiscount_money;
+         // Tổng số tiền khi chưa giảm giá
+         $sum_money_many_day= $sum_money_many_day+ $info_cart['total_sum'];
+        }
+        
     }
     // Số tiền được giảm
     $be_discount_money=$sum_money_many_day-$total_money_discount;
