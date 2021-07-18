@@ -56,7 +56,7 @@ get_sidebar();
                                     <tr>
                                         <td><?php echo $t; ?></td>
                                         <td><?php echo $room['roomNumber']; ?></td>
-                                        <td><?php echo $room['name']; ?></td>
+                                        <td style="text-align:left"><?php echo $room['name']; ?></td>
                                         <td><?php
                                             if ($room['state'] == 0) {
                                                 echo "<span class='label-danger label label-default'>Còn trống</span>";

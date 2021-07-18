@@ -36,7 +36,7 @@ get_sidebar();
                                 <th class="col-md-1">STT</th>
                                 <th class="col-md-4">Tên loại phòng</th>
                                 <th class="col-md-3">Hình ảnh</th>
-                                <th class="col-md-2">Giá($)</th>
+                                <th class="col-md-2">Giá(VND)</th>
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                                     ?>
                                     <th class="col-md-2">Chỉnh sửa</th>
@@ -54,7 +54,7 @@ get_sidebar();
                                     ?>
                                     <tr>
                                         <td><p><?php echo $t; ?></p></td>
-                                        <td><?php echo $room_type['name']; ?></td>
+                                        <td style="text-align:left"><?php echo $room_type['name']; ?></td>
                                         <td><img src="public/images/room/<?php echo $room_type['image']; ?>" class="img-rounded thumb" alt="User Image" width="" height="100"> </td>
                                         <td><?php echo currency_format($room_type['price']); ?></td>
                                 <!--<td><input type="text" value="<?php echo number_format($room_type['price']); ?>" disabled="" class="text-center border-price-roomtype" id="roomtype_price"/></td>-->
