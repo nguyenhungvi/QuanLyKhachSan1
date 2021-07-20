@@ -42,7 +42,7 @@ get_sidebar();
                                 <th class="col-md-2">Số phòng</th>
                                 <th class="col-md-5">Loại phòng</th>
                                 <th class="col-md-2">Trạng thái</th>
-                                <th class="col-md-2">Chỉnh sửa</th>
+                                <th class="col-md-2"></th>
                             </tr>
                         </thead>
                         <tbody>

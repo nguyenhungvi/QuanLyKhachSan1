@@ -40,7 +40,7 @@ get_sidebar();
                                     <th class="col-md-5">Hình ảnh</th>
                                     <th class="col-md-2">Ngày bắt đầu</th>
                                     <th class="col-md-2">Ngày kết thúc</th>
-                                    <th class="col-md-2">Chỉnh sửa</th>
+                                    <th class="col-md-2"></th>
                                 </tr>
                             </thead>
                             <tbody>

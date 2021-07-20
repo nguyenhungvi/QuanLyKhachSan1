@@ -13,7 +13,7 @@ get_sidebar();
             </div>
             <div class="header-title">
                 <h1>Quản lý đặt phòng</h1>
-                <small>Thông tin giỏ hàng</small>
+                <small>Thông tin đặt phòng</small>
             </div>
         </div>
         <!--CART-->

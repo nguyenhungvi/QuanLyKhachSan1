@@ -40,7 +40,7 @@ get_sidebar();
                                     <th class="col-md-5">Tên sản phẩm</th>
                                     <th class="col-md-2">Giá</th>
                                     <th class="col-md-2">Số lượng</th>
-                                    <th class="col-md-2">Chỉnh sửa</th>
+                                    <th class="col-md-2"></th>
                                 </tr>
                             </thead>
                             <tbody>

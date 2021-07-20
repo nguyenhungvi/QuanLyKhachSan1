@@ -27,7 +27,7 @@ get_sidebar();
                                 <th class="col-md-3">Tên khách hàng</th>
                                 <th class="col-md-3">Tổng tiền</th>
                                 <th class="col-md-3">Trạng thái</th>
-                                <th class="col-md-2">Chỉnh sửa</th>
+                                <th class="col-md-2"></th>
                             </tr>
                         </thead>
                         <tbody>
