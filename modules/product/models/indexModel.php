@@ -8,7 +8,7 @@ function get_num_row($label){
 function get_list_product($start=0,$num_per_page=6,$where=""){
     if(!empty($where))
         $where="WHERE {$where}";
-    $list_product = db_fetch_array("SELECT `id`, `name_product`,`price`,`number` FROM `product` {$where} LIMIT {$start},{$num_per_page}");
+    $list_product = db_fetch_array("SELECT `id`, `name_product`,`price`,`number`,`unit` FROM `product` {$where} LIMIT {$start},{$num_per_page}");
     return $list_product;
 }
 

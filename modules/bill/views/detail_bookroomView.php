@@ -68,7 +68,7 @@ get_sidebar();
                                 <th class="col-md-1">STT</th>
                                 <th class="col-md-3">Loại phòng</th>
                                 <!-- <th class="col-md-2">Giá phòng</th> -->
-                                <th class="col-md-1">Số lượng</th>
+                                <th class="col-md-1">Số lượng phòng</th>
                                 <th class="col-md-2">Ngày đặt</th>
                                 <th class="col-md-2">Tổng tiền</th>
                                 <!-- <th class="col-md-1">Chỉnh sửa</th> -->
@@ -126,7 +126,7 @@ get_sidebar();
                                         <tr>
                                             <td><?php echo $t; ?></td>
                                             <td><?php echo $detail_surcharge['name_product']; ?></td>
-                                            <td><?php echo $detail_surcharge['number']; ?></td>
+                                            <td><?php echo $detail_surcharge['number']; echo " {$detail_surcharge['unit']}"; ?></td>
                                             <td><?php echo $detail_surcharge['price']; ?></td>
                                             <td><?php echo $detail_surcharge['sum_money']; ?></td>
                                         </tr>

@@ -9,7 +9,7 @@ function get_list_detail_bookroom_booking_code($booking_code){
 
 //Lấy danh sách phụ thu theo hóa đơn
 function get_list_detail_surcharge($booking_code){
-    $result=db_fetch_array("SELECT product.name_product, detail_surcharge.number, detail_surcharge.price, `sum_money` FROM `detail_surcharge`,`product` WHERE detail_surcharge.booking_code={$booking_code} and detail_surcharge.id_product=product.id");
+    $result=db_fetch_array("SELECT product.name_product, detail_surcharge.number, detail_surcharge.price, `sum_money`, product.unit FROM `detail_surcharge`,`product` WHERE detail_surcharge.booking_code={$booking_code} and detail_surcharge.id_product=product.id");
     return $result;
 }
 

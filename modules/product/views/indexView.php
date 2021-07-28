@@ -55,7 +55,7 @@ get_sidebar();
                                             <td><?php echo $t; ?></td>
                                             <td><?php echo $product['name_product']; ?></td>
                                             <td><?php echo $product['price']; ?></td>
-                                            <td><?php echo $product['number']; ?></td>
+                                            <td><?php echo $product['number']; echo " {$product['unit']}"; ?></td>
                                             <td>
                                                 <button type="button" name="productUpdate" class="btn btn-add btn-sm" data-toggle="modal" data-target="#customer1" product-id="<?php echo $product['id']; ?>"><i class="fa fa-pencil"></i></button>
                                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
@@ -105,9 +105,13 @@ get_sidebar();
                                             <input type="text" name="product_Price" placeholder="" value="" class="form-control">
                                         </div>
                                         <!--Số lượng-->
-                                        <div class="col-md-4 form-group">
+                                        <div class="col-md-2 form-group">
                                             <label class="control-label" style="margin-bottom: 10px;">Số lượng:</label>
                                             <input type="text" name="product_Number" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;"></label>
+                                            <input type="text" name="product_Unit" placeholder="" value="" class="form-control" style="margin-top: 14px; margin-left: -10px;">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">
@@ -152,9 +156,13 @@ get_sidebar();
                                             <input type="text" name="productPrice" placeholder="" value="" class="form-control">
                                         </div>
 
-                                        <div class="col-md-4 form-group">
+                                        <div class="col-md-2 form-group">
                                             <label class="control-label" style="margin-bottom: 10px;">Số lượng:</label>
                                             <input type="text" name="productNumber" placeholder="" value="" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="control-label" style="margin-bottom: 10px;"></label>
+                                            <input type="text" name="productUnit" placeholder="" value="" class="form-control" style="margin-top: 14px; margin-left: -10px;">
                                         </div>
                                         <div class="col-md-12 form-group user-form-group">
                                             <div class="pull-right">

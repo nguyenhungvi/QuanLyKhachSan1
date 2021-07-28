@@ -6,6 +6,7 @@ function construct() {
 }
 
 function indexAction() {
+    //header("refresh: 5");
     load('helper', 'format');
     $info_revenue_month = get_revenue_month();
     $x1 = 1;

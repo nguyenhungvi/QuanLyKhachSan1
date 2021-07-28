@@ -70,15 +70,18 @@
             </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top">
+            <?php echo "<a href=\"javascript:history.go(-1)\" class=\"pe-7s-angle-left-circle\" style=\"line-height: 2;
+    font-size: 30px;\"></a>"; ?>
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <!-- Sidebar toggle button-->
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="pe-7s-angle-left-circle"></span>
+                    <!-- <span class="sr-only">Toggle navigation</span> -->
+                    <!-- <span class="pe-7s-angle-left-circle"></span> -->
                     <span id="<?php if (isset($message_submit)) echo "message-submit"; ?>" style="<?php if (isset($message_submit)) echo "display: initial;position: relative;background: #fff;
                           font-size: 20px;
                           padding: 10px;
                           color: #e5343d;"; ?>"><?php if (isset($message_submit)) echo $message_submit; ?></span>
                 </a>
+                
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- User -->

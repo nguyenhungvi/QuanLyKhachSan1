@@ -339,6 +339,7 @@ $(document).ready(function () {
                 $("input[name='productName']").val(data.name_product);
                 $("input[name='productPrice']").val(data.price);
                 $("input[name='productNumber']").val(data.number);
+                $("input[name='productUnit']").val(data.unit);
 //                console.log(roomState);
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -411,6 +412,116 @@ $(document).ready(function () {
             // }
             error: function (data) {
                 console.log("AJAX ERROR:", data);
+            }
+        });
+    });
+});
+
+
+    
+    
+var time = new Date().getTime();
+$(document.body).bind("mousemove keypress", function(e) {
+    time = new Date().getTime();
+});
+console.log(time);
+var today = new Date();
+var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+function refresh() {
+    if(time1 == "11:59:59") {
+        //window.location.reload(true);
+        var data = {id: 2};
+        $.ajax({
+            url: '?mod=room&controller=room&action=list_room_checkout', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                console.log(data);
+                let a=confirm("Có "+data.number_room+" phòng sắp đến giờ trả phòng! \n Bạn có muốn thông báo đến khách hàng không?");
+                if(a){
+                    window.location.replace("http://localhost/QuanLyKhachSan1/?mod=room&controller=room&action=room_checkout");
+                }
+                //console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+
+    }
+        
+    else {
+        today = new Date();
+        time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        setTimeout(refresh, 10);
+        //console.log(time1);
+    }
+        
+}
+
+setTimeout(refresh, 10);
+
+//===============================================================================
+// room_checkout
+//Xem danh sách phòng sắp trả
+$(document).ready(function () {
+    $("button[name='info_room']").click(function () {
+        var id_book_room = $(this).attr('info-bookrom-id');
+        var data = { id_book_room: id_book_room };
+        //console.log(id);
+        $.ajax({
+            url: '?mod=room&controller=room&action=list_room_checkout', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                //Xử lý dữ liệu trả về
+                //console.log(data.number_room);
+                let room_number=data.number_room;
+                let count_room_number=room_number.length;
+                let html;
+                for(let idx=0;idx<count_room_number;idx++){
+                    html=html+"<tr><td>"+idx+"</td><td>"+room_number[idx].roomNumber+"</td></tr>";
+                }
+                
+                $("#test_table").html(html);
+                
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+});
+
+//===============================================================================
+// room_checkout
+// Gửi mail cho khách hàng
+$(document).ready(function () {
+    $("button[name='send_mail']").click(function () {
+        var address_email = $(this).attr('email-customer');
+        var fullname_email = $(this).attr('fullname-customer');
+        var data = { address_email: address_email, fullname_email:fullname_email};
+        console.log(data);
+        $.ajax({
+            url: '?mod=room&controller=room&action=list_room_checkout', //Trang xử lý, mặc định trang hiện tại xử lý ngầm lên server
+            method: 'POST', //POST OR GET, mặc định GET
+            data: data, //Dữ liệu truyền lên server, biến được khai báo bên trên
+            //dataType: 'text', //html,text, script
+            dataType: 'json', //dataType kiểu json
+            success: function (data) {
+                alert(data.alert);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
             }
         });
     });

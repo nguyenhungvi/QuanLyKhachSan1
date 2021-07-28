@@ -44,7 +44,11 @@ function get_detailAction() {
                 insert_info_room_type_detail_image($data);
             }
         }
-        redirect("?mod=room&controller=roomtype_detail&action=get_detail&id={$id}&get_page={$_GET['get_page']}");
+        if(isset($_GET['get_page'])){
+            redirect("?mod=room&controller=roomtype&action=list_room_type&page={$_GET['get_page']}");
+        }else{
+            redirect("?mod=room&controller=roomtype&action=list_room_type");
+        }
     }
     if(isset($_POST['btn-delete-room-type-detail-img'])){
         delete_detailAction();

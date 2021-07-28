@@ -32,6 +32,9 @@ get_sidebar();
                             <input type="submit" name="load_state" class="btn btn-add btn-sm" room-id="" value="Cập nhật trạng thái mới" />
                         </div>
                     </form>
+                    <div class="col-sm-4 m-b-10" id=""> 
+                        <a href="?mod=room&controller=room&action=room_checkout" class="btn btn-add btn-sm">Danh sách sắp trả phòng</a>
+                    </div>
                 </div>
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                 <div class="table-responsive">
@@ -62,6 +65,9 @@ get_sidebar();
                                                 echo "<span class='label-danger label label-default'>Còn trống</span>";
                                             } elseif ($room['state'] == 1) {
                                                 echo "<span class='label-custom label label-default'>Đã đặt</span>";
+                                            }
+                                            elseif ($room['state'] == 2) {
+                                                echo "<span class='label-warning label label-default'>Đang dọn dẹp</span>";
                                             }
                                             ?></td>
                                         <td>
@@ -176,6 +182,7 @@ get_sidebar();
                                             <label class="control-label" style="margin-bottom: 10px;">Trạng thái:</label>
                                             <select class="form-control" name="roomState" id="roomState">
                                                 <option value="0">Còn trống</option>
+                                                <option value="2">Đang dọn dẹp</option>
                                                 <option value="1">Đã đặt</option>
                                             </select>
                                         </div>

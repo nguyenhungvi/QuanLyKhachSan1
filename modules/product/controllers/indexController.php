@@ -36,7 +36,8 @@ function indexAction() {
         $data = array(
             'name_product' => $_POST['product_Name'],
             'price' => $_POST['product_Price'],
-            'number' => $_POST['product_Number']
+            'number' => $_POST['product_Number'],
+            'unit' => $_POST['product_Unit']
         );
         add_product($data);
         echo_alert("Thêm sản phẩm thành công");
@@ -64,7 +65,8 @@ function update_productAction() {
         $data = array(
             'name_product' => $_POST['productName'],
             'price' => $_POST['productPrice'],
-            'number' => $_POST['productNumber']
+            'number' => $_POST['productNumber'],
+            'unit' => $_POST['productUnit']
         );
         update_info_product_id($data, $product_id);
         redirect("?mod=product");
@@ -76,7 +78,8 @@ function update_productAction() {
             'id' => $product_id['id'],
             'name_product' => $product_id['name_product'],
             'price' => $product_id['price'],
-            'number' => $product_id['number']
+            'number' => $product_id['number'],
+            'unit'=>$product_id['unit']
         );
         echo json_encode($result);
     }
